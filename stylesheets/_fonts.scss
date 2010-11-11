@@ -1,0 +1,36 @@
+$font-size-base: 16;
+$line-height-base: 1.5;
+$font-family-base: 'Droid Sans', sans-serif;
+$title-font-family: Georgia, serif;
+
+@mixin rhythm-px($size) {
+  font-size: $size*100%/$font-size-base;
+  line-height: $font-size-base*$line-height-base/$size;
+}
+
+@mixin rhythm-pc($percent) {
+  font-size: $percent;
+  @include line-unit-pc(line-height, $percent);
+}
+
+@mixin header-rhythm($percent) {
+  $line-unit-pc: $line-height-base*100%;
+  $top-diff-pc: $line-unit-pc - $percent;
+
+  font-size: $percent;
+  line-height: 1;
+
+  @if $percent > 100% {
+    $half-line-unit: ($line-unit-pc/2)/$percent;
+    margin-bottom: #{$half-line-unit}em;
+    padding-top: ($half-line-unit + $top-diff-pc/$percent)*1em;
+  } @else {
+    $third-line-unit: ($line-unit-pc/4)/$percent;
+    margin-bottom: #{$third-line-unit}em;
+    padding-top: ($top-diff-pc/$percent - $third-line-unit)*1em;
+  }
+}
+
+@mixin line-unit-pc($property, $percent, $unit: '') {
+  #{$property}: $line-height-base*100%/$percent#{$unit};
+}

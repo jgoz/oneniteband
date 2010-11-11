@@ -1,0 +1,81 @@
+@import "compass/css3";
+
+$fb-font-size: 100%;
+
+// TODO: Remove for production
+// Lorem Ipsum styles
+#lorem {
+  display: table-row;
+
+  & > * { display: table-cell; width: 48%; padding-right: 1%; }
+  .headers { text-align: right; }
+}
+
+.ie6, .ie7 {
+  #lorem div {
+    float: left;
+  }
+}
+
+html {
+  background: $container-bg;
+}
+
+header, #main, footer {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+// Site styles here
+header {
+  border-bottom: solid 1px $border-fg;
+  line-height: 1;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+#site-title {
+  @include text-shadow;
+
+  color: $title-fg;
+  font-family: $title-font-family;
+  font-size: 200%;
+  letter-spacing: -1.5px;
+}
+
+#main {
+  background: $main-bg;
+  min-height: 15em;
+  padding-top: 0.75em;
+  padding-bottom: 2.25em;
+}
+
+footer {
+  border-top: solid 1px $border-fg;
+  font-size: 82.5%;
+  padding-top: 1.5em;
+}
+
+.field-song {
+  padding-bottom: 0.25em;
+}
+
+.field-name {
+  margin-left: 1.5em;
+  padding-top: 0.75em;
+}
+
+input.name {
+  display: block;
+}
+
+label.song {
+  display: inline-block;
+  width: 1.5em;
+}
+
+.submit {
+  margin-top: 1.5em;
+  margin-left: 1.5em;
+}
+

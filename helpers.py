@@ -1,4 +1,4 @@
-from flask import Flask, g, redirect, request, url_for
+from flask import Flask, g, redirect, render_template, request, url_for
 from functools import wraps
 
 class RestFlask(Flask):

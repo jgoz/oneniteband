@@ -1,2 +1,6 @@
 *.pyc
 *.pyo
+*.swp
+.sass-cache
+static/css
+static/js/*.js
