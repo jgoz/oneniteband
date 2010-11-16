@@ -250,7 +250,7 @@ button {
 // >> The Magnificent CLEARFIX: Updated to prevent margin-collapsing on child elements << j.mp/bestclearfix
 // Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page
 
-.clearfix {
+@mixin clearfix {
   &:before {
     content: "\0020";
     display: block;
@@ -263,3 +263,5 @@ button {
     visibility: hidden;
     clear: both; }
   zoom: 1; }
+
+.clearfix { @include clearfix; }
