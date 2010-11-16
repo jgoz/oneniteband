@@ -77,3 +77,20 @@ footer {
   padding-top: 1.5em;
 }
 
+#intro {
+  & > span {
+    display: inline-block;
+    padding-right: 0.75em;
+  }
+}
+
+.config {
+  display: table-cell;
+  padding: 0 3% 0 0;
+  width: 30%;
+
+  h2 {
+    letter-spacing: -1px;
+  }
+}
+
