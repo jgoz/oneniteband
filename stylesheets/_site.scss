@@ -21,7 +21,7 @@ html {
   background: $container-bg;
 }
 
-header, #main, footer {
+header, nav, #main, footer {
   padding-left: 2em;
   padding-right: 2em;
 }
@@ -34,6 +34,19 @@ header {
   padding-bottom: 1em;
 }
 
+header, nav {
+  @include clearfix;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav li {
+  float: left;
+  margin-right: 1em;
+}
+
 #site-title {
   @include text-shadow;
 
@@ -41,6 +54,11 @@ header {
   font-family: $title-font-family;
   font-size: 200%;
   letter-spacing: -1.5px;
+}
+
+#motto {
+  float: right;
+  line-height: 2;
 }
 
 #main {
