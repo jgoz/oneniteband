@@ -1,6 +1,7 @@
 $font-size-base: 16;
 $line-height-base: 1.5;
-$font-family-base: 'Droid Sans', sans-serif;
+$font-family-base: 'Century Gothic', 'Apple Gothic', sans-serif;
+$header-font-family: 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
 $title-font-family: 'Jokerman', sans-serif;
 
 @mixin rhythm-px($size) {
