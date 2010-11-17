@@ -81,16 +81,31 @@ footer {
   & > span {
     display: inline-block;
     padding-right: 0.75em;
+
+    & > em { background-color: #fda; }
   }
+}
+
+#covered {
+  @include rhythm-pc(112.5%);
+  font-weight: bold;
+}
+
+.configs {
+  border-spacing: 0.5em 0;
+  display: table;
+  margin-left: -0.5em;
 }
 
 .config {
+  @include box-shadow(#ccc, 0, 0, 8px);
+
+  background-color: #efefef;
+  border: 1px solid $border-fg;
+  border-collapse: separate;
   display: table-cell;
-  padding: 0 3% 0 0;
+  padding: 0 0.5em;
   width: 30%;
 
-  h2 {
-    letter-spacing: -1px;
-  }
+  h2 { letter-spacing: -1px; }
 }
-
