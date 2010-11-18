@@ -1,7 +1,8 @@
-drop table if exists content;
+drop table if exists gig;
 
-create table content (
-  key text primary key,
-  page text not null,
-  text text not null
+create table gig (
+  id integer primary key autoincrement,
+  date date not null,
+  title varchar(50) not null,
+  place varchar(50)
 );

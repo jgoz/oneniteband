@@ -1,4 +1,4 @@
-from data import Database, get_page_content
+import data
 from datetime import datetime
 from helpers import RestFlask, templated
 
@@ -12,17 +12,20 @@ PASSWORD = 'default'
 app = RestFlask(__name__)
 app.config.from_envvar('ONB_SETTINGS', silent=True)
 
-db = Database(app.config.get('DATABASE', DATABASE))
+db = data.Database(app.config.get('DATABASE', DATABASE))
 
 @app.context_processor
 def inject_now():
     return dict(now=datetime.now())
 
+@app.template_filter('gigdate')
+def gigdate_filter(dt):
+    return dt.strftime('%b %d')
+
 @app.get('/')
 @templated()
 def index():
-    content = dict([[c.key, c.text] for c in get_page_content(db, 'index')])
-    return dict(content=content)
+    return dict(gigs=data.get_upcoming_gigs(db))
 
 if __name__ == '__main__':
     app.config.from_object(__name__)

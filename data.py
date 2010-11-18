@@ -1,3 +1,4 @@
+from datetime import datetime
 from sqlalchemy import create_engine, MetaData, Table
 
 class Database(object):
@@ -11,6 +12,6 @@ class Database(object):
     def conn(self):
         return engine.connect()
 
-def get_page_content(db, page):
-    content = db.table('content')
-    return content.select(content.c.page == page).execute()
+def get_upcoming_gigs(db):
+    gig = db.table('gig')
+    return gig.select(gig.c.date > datetime.now).limit(5).order_by(gig.c.date).execute()

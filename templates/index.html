@@ -29,4 +29,12 @@
   <p>We know how to make your next one-night event a <strong>big hit</strong>!</p>
   <a class='big-action' href=''>Book Us!</a> or <a href=''>find out more</a>
 </div>
+
+<div id='gigs'>
+  <span class='upcoming'>Playing soon &rarr;</span>
+  {% for gig in gigs %}
+    <span class='gig'>{{ gig.title }} {% if gig.place %} at {{ gig.place }} {% endif %} on {{ gig.date|gigdate }}</span>
+    {% if not loop.last %}&bull;{% endif %}
+  {% endfor %}
+</div>
 {% endblock %}

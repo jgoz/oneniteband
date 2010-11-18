@@ -131,3 +131,13 @@ a.big-action {
   p { @include rhythm-pc(112.5%); }
   .big-action { vertical-align: middle; }
 }
+
+#gigs {
+  background-color: $onb-blue;
+  color: #fff;
+  margin-top: 1.5em;
+  overflow: hidden;
+  padding: 0 0.5em;
+
+  .upcoming { font-weight: bold; }
+}
