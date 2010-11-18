@@ -1,6 +1,24 @@
 @import "compass/css3";
 
-$fb-font-size: 100%;
+@mixin buttonize($base_color: #5291C5, $button_size: $font-size-base*2px) {
+  @include box-sizing(border-box);
+  @include border-radius($button_size/4);
+  @include linear-gradient(color-stops(lighten($base_color, 30%), lighten($base_color, 15%) 4%, $base_color));
+  @include text-shadow(darken($base_color, 10%), 0, -1px, 0);
+
+  border: 1px solid darken($base_color, 20%);
+  color: #fff;
+  display: inline-block;
+  height: $button_size;
+  line-height: $button_size - $button_size/$font-size-base;
+  padding: 0 $button_size/4;
+  text-decoration: none;
+
+  &:active {
+    @include linear-gradient(color-stops(darken($base_color, 30%), darken($base_color, 15%) 4%, darken($base_color, 7%)));
+  }
+  &:link, &:hover { color: #fff }
+}
 
 // TODO: Remove for production
 // Lorem Ipsum styles
@@ -26,10 +44,10 @@ header, nav, #main, footer {
   padding-right: 2em;
 }
 
-// Site styles here
 header {
   border-bottom: solid 1px $border-fg;
-  line-height: 1;
+  height: 10em;
+  line-height: 10;
   padding-top: 1em;
   padding-bottom: 1em;
 }
@@ -61,7 +79,6 @@ nav li {
 
 #motto {
   float: right;
-  line-height: 2;
 }
 
 #main {
@@ -77,6 +94,12 @@ footer {
   padding-top: 1.5em;
 }
 
+a.big-action {
+  @include buttonize($onb-purple, $font-size-base*3px);
+  font-size: 1.75em;
+  font-weight: bold;
+}
+
 #intro, #covered { @include rhythm-pc(112.5%); }
 
 #intro {
@@ -84,21 +107,20 @@ footer {
     display: inline-block;
     padding-right: 0.75em;
 
-    & > em { border-bottom: 2px dotted $onb-purple; }
+    & > em {
+      border-bottom: 1px dashed $onb-purple;
+      color: $onb-purple;
+    }
   }
 }
 
-#covered {
-  font-weight: bold;
-}
-
-.configs {
+.blocks {
   border-spacing: 0.5em 0;
   display: table;
   margin-left: -0.5em;
 }
 
-.config {
+.block {
   @include box-shadow(#ccc, 0, 0, 8px);
   @include linear-gradient(color-stops(#efefef, #dfdfdf));
 
@@ -114,4 +136,13 @@ footer {
     @include text-shadow(rgba(0,0,0,0.2), 0, 0, 2px);
     letter-spacing: -1px;
   }
+}
+
+#call-to-action {
+  margin: 1.5em auto 0;
+  padding: 0 0.5em;
+  width: 33%;
+
+  p { @include rhythm-pc(112.5%); }
+  .big-action { vertical-align: middle; }
 }
