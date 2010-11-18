@@ -24,12 +24,14 @@ html {
   background: $container-bg;
 }
 
-header, nav, #main, footer {
+header, #nav, #main, footer {
   padding-left: 2em;
   padding-right: 2em;
 }
 
 header {
+  @include clearfix;
+
   border-bottom: solid 1px $border-fg;
   height: 10em;
   line-height: 10;
@@ -37,17 +39,17 @@ header {
   padding-bottom: 1em;
 }
 
-header, nav {
-  @include clearfix;
-}
-
-nav ul {
+#nav {
+  background-color: $onb-purple;
   list-style-type: none;
-}
+  margin-left: 0;
 
-nav li {
-  float: left;
-  margin-right: 1em;
+  a, a:link, a:hover { color: #fff; }
+
+  li {
+    display: inline-block;
+    margin-right: 1em;
+  }
 }
 
 #site-title {
