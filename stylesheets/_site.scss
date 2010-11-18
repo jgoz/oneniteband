@@ -6,6 +6,7 @@
   @include linear-gradient(color-stops(lighten($base_color, 30%), lighten($base_color, 15%) 4%, $base_color));
   @include text-shadow(darken($base_color, 10%), 0, -1px, 0);
 
+  background-color: $base_color;
   border: 1px solid darken($base_color, 20%);
   color: #fff;
   display: inline-block;
