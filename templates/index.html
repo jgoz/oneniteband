@@ -30,10 +30,9 @@
 </div>
 
 <div id='gigs'>
-  <span class='upcoming'>Playing soon &rarr;</span>
+  <span class='upcoming'>Next event</span>
   {% for gig in gigs %}
     <span class='gig'>{{ gig.title }} {% if gig.place %} at {{ gig.place }} {% endif %} on {{ gig.date|gigdate }}</span>
-    {% if not loop.last %}&bull;{% endif %}
   {% endfor %}
 </div>
 {% endblock %}

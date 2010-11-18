@@ -127,4 +127,8 @@ a.big-action {
   padding: 0 0.5em;
 
   .upcoming { font-weight: bold; }
+  .upcoming:after { content: ' \2192'; font-weight: bold; } // &rarr;
+
+  .gig:after { content: ' \2022 '; } // &bull;
+  .gig:last-child:after { content: ''; }
 }
