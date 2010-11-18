@@ -20,21 +20,6 @@
   &:link, &:hover { color: #fff }
 }
 
-// TODO: Remove for production
-// Lorem Ipsum styles
-#lorem {
-  display: table-row;
-
-  & > * { display: table-cell; width: 48%; padding-right: 1%; }
-  .headers { text-align: right; }
-}
-
-.ie6, .ie7 {
-  #lorem div {
-    float: left;
-  }
-}
-
 html {
   background: $container-bg;
 }
