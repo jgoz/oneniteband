@@ -32,16 +32,19 @@
 
 <body>
   <header>
-    <h1 id='site-title'>One Nite Band</h1>
+    <h1 id='site-title'>
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt='One Nite Band' />
+    </h1>
+  </header>
+  <div id='nav'>
     <span id='motto'>Music for all occasions</span>
-
-    <ul id='nav'>
+    <ul>
       <li><a href="{{ url_for('index') }}">Home</a></li>
       <li><a href="">Bio</a></li>
       <li><a href="">Photos</a></li>
       <li><a href="">Contact</a></li>
     </ul>
-  </header>
+  </div>
 
   <div id="main">
     {% block content %}{% endblock %}

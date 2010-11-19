@@ -25,26 +25,33 @@ html {
   background: $container-bg;
 }
 
-header, #main, footer {
+header, #nav, #main, footer {
   padding-left: 2em;
   padding-right: 2em;
 }
 
 header {
-  @include clearfix;
+  background: $header-bg url(/static/images/header_ray.png) no-repeat center top;
+  height: 206px;
+}
 
-  border-bottom: solid 1px $border-fg;
-  padding-top: 1em;
-  padding-bottom: 0.5em;
+#site-title {
+  margin: 0 auto;
+  position: relative;
+  top: 55px;
+  width: 205px;
 }
 
 #nav {
-  float: right;
-  line-height: 1.5;
-  list-style-type: none;
-  margin-left: 0;
-  text-align: right;
-  width: 33%;
+  background-color: $nav-bg;
+
+  ul {
+    float: right;
+    list-style-type: none;
+    margin-left: 0;
+    text-align: right;
+    width: 50%;
+  }
 
   li {
     display: inline-block;
@@ -52,14 +59,7 @@ header {
   }
 }
 
-#site-title {
-  @include text-shadow;
-
-  color: $title-fg;
-  font-family: $title-font-family;
-  font-size: 200%;
-  letter-spacing: -1.5px;
-}
+#motto { color: #fff; }
 
 #main {
   background: $main-bg;
@@ -82,6 +82,7 @@ a.big-action {
 
 #intro {
   @include header-rhythm(200%);
+  color: #000;
   letter-spacing: -2px;
 }
 
@@ -120,14 +121,15 @@ a.big-action {
 }
 
 #gigs {
-  background-color: $onb-blue;
+  background-color: #333;
   color: #fff;
+  height: 1.5em;
   margin-top: 1.5em;
   overflow: hidden;
   padding: 0 0.5em;
 
   .upcoming { font-weight: bold; }
-  .upcoming:after { content: ' \2192'; font-weight: bold; } // &rarr;
+  .upcoming:after { content: ' \203A'; font-weight: bold; } // &rsaquo;
 
   .gig:after { content: ' \2022 '; } // &bull;
   .gig:last-child:after { content: ''; }
