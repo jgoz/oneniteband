@@ -27,6 +27,11 @@ def gigdate_filter(dt):
 def index():
     return dict(gigs=data.get_upcoming_gigs(db))
 
+@app.get('/bio')
+@templated()
+def bio():
+    return None
+
 if __name__ == '__main__':
     app.config.from_object(__name__)
     app.run(host='0.0.0.0', debug=True)
