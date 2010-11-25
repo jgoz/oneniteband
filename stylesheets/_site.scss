@@ -38,8 +38,8 @@ header {
 #site-title {
   margin: 0 auto;
   position: relative;
-  top: 55px;
-  width: 205px;
+  top: 100px;
+  width: 144px;
 }
 
 #nav {
@@ -59,7 +59,9 @@ header {
   }
 }
 
-#motto { color: #fff; }
+#band-name { color: #efefef; font-weight: bold; }
+#band-name:after { content: ' \203A'; font-weight: bold; } // &rsaquo;
+#motto { color: #ddd; font-size: 82.5%; }
 
 #main {
   background: $main-bg;
@@ -82,7 +84,7 @@ a.big-action {
 
 #intro {
   @include header-rhythm(200%);
-  color: #000;
+  color: $onb-blue-very-dark;
   letter-spacing: -2px;
 }
 
@@ -94,10 +96,10 @@ a.big-action {
 }
 
 .block {
-  @include box-shadow(#ccc, 0, 0, 8px);
-  @include linear-gradient(color-stops(#efefef, #dfdfdf));
+  @include box-shadow(rgba(0,0,0,0.25), 0, 0, 8px);
+  @include linear-gradient(color-stops(#fff6d7, #fff1b9));
 
-  background-color: #efefef;
+  background-color: #fff6d7;
   border: 1px solid $border-fg;
   border-collapse: separate;
   color: #222;
@@ -106,8 +108,9 @@ a.big-action {
   width: 30%;
 
   h2 {
+    color: $onb-blue-very-dark;
     @include text-shadow(rgba(0,0,0,0.2), 0, 0, 2px);
-    letter-spacing: -1px;
+    letter-spacing: -2px;
   }
 }
 
