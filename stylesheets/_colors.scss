@@ -1,19 +1,19 @@
+$onb-blue: #0d43af;
+$onb-blue-very-dark: #004;
+$onb-blue-light: #5e93fb;
+$onb-orange: #d66a00;
+$onb-purple: #712da1;
+$onb-almost-white: #fdfaf1;
+
 $text-fg: #444;
 
-$link-fg: #3b3bcc;
-$link-hover-fg: #5252cc;
+$link-fg: $onb-blue;
+$link-hover-fg: lighten($link-fg, 30%);
 
 $highlight-fg: #000;
 $highlight-bg: #dbf94a;
 
-$container-bg: #ccc;
-$header-bg: #e1b738;
-$main-bg: #fdfaf1;
-$nav-bg: #333;
+$container-bg: #e1b738;
+$main-bg: $onb-almost-white;
+$nav-bg: $onb-blue-very-dark;
 $border-fg: #afafaf;
-
-$title-fg: #117;
-$onb-blue: #1b1bb3;
-$onb-blue-very-dark: #004;
-$onb-orange: #ff4900;
-$onb-purple: #a600a6;

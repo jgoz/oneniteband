@@ -25,14 +25,16 @@ html {
   background: $container-bg;
 }
 
-header, #nav, #main, footer {
+#nav, #main, footer {
+  margin: 0px auto;
+  max-width: 1152px;
   padding-left: 2em;
   padding-right: 2em;
 }
 
 header {
-  background: $header-bg url(/static/images/header_ray.png) no-repeat center top;
-  height: 206px;
+  background: url(/static/images/header_ray.png) no-repeat center top;
+  height: 210px;
 }
 
 #site-title {
@@ -40,10 +42,18 @@ header {
   position: relative;
   top: 100px;
   width: 144px;
+
+  a { text-decoration: none; }
 }
 
 #nav {
   background-color: $nav-bg;
+  color: $onb-almost-white;
+  height: 2em;
+  line-height: 2;
+  
+  a, a:link, a:visited { color: $onb-almost-white;}
+  a:hover, a:active { color: white; }
 
   ul {
     float: right;
@@ -59,9 +69,12 @@ header {
   }
 }
 
-#band-name { color: #efefef; font-weight: bold; }
+#band-name {
+  font-weight: bold;
+  a { text-decoration: none; }
+}
 #band-name:after { content: ' \203A'; font-weight: bold; } // &rsaquo;
-#motto { color: #ddd; font-size: 82.5%; }
+#motto { font-size: 82.5%; }
 
 #main {
   background: $main-bg;
@@ -71,7 +84,7 @@ header {
 }
 
 footer {
-  border-top: solid 1px $border-fg;
+  color: $onb-almost-white;
   font-size: 82.5%;
   padding-top: 1.5em;
 }
@@ -109,7 +122,7 @@ a.big-action {
 
   h2 {
     color: $onb-blue-very-dark;
-    @include text-shadow(rgba(0,0,0,0.2), 0, 0, 2px);
+    @include text-shadow($onb-blue-light, 1px, 0, 1px);
     letter-spacing: -2px;
   }
 }
@@ -124,8 +137,8 @@ a.big-action {
 }
 
 #gigs {
-  background-color: #333;
-  color: #fff;
+  background-color: $nav-bg;
+  color: $onb-almost-white;
   height: 1.5em;
   margin-top: 1.5em;
   overflow: hidden;
