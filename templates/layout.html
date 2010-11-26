@@ -36,7 +36,7 @@
       <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt='One Nite Band' /></a>
     </h1>
   </header>
-  <div id='nav'>
+  <div id='nav' class='nav'>
     <div class='nav-items'>
       <div id='home-link'>
         <span id='band-name'><a href="{{ url_for('index') }}" title='Home page'>One Nite Band</a></span>
@@ -54,6 +54,12 @@
     {% block content %}{% endblock %}
   </div>
 
+  <ul id='nav-bottom' class='nav'>
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+    <li><a href="{{ url_for('bio') }}">Bio</a></li>
+    <li><a href="">Photos</a></li>
+    <li><a href="">Contact</a></li>
+  </ul>
   <footer>
     <span id='copyright'>Copyright &copy; {{ now.year }} One Nite Band.</span>
   </footer>

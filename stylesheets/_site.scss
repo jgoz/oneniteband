@@ -63,7 +63,7 @@ header {
   #site-title { top: 60px; }
 }
 
-#nav {
+.nav {
   background-color: $nav-bg;
   color: $onb-almost-white;
   height: 2em;
@@ -71,7 +71,9 @@ header {
 
   a, a:link, a:visited { color: $onb-almost-white; }
   a:hover, a:active { color: white; }
+}
 
+#nav {
   .nav-items { display: table; width: 100%; }
   ul, #home-link { display: table-cell; width: 50%; }
   
@@ -88,6 +90,21 @@ header {
   }
 }
 
+#nav-bottom {
+  display: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+
+  li {
+    display: inline-block;
+    margin-right: 1em;
+    &:last-child { margin-right: 0; }
+  }
+}
+
 #band-name {
   font-weight: bold;
   a { text-decoration: none; }
@@ -96,18 +113,15 @@ header {
 #motto { font-size: 82.5%; }
 
 @media screen and (max-width: 480px) {
-  #nav {
-    #home-link { display: none; }
-    .nav-items { display: block; }
-    ul {
-      display: block;
-      text-align: center;
-      width: 100%;
-    }
-    li {
-      margin-left: 0;
-      margin-right: 1em;
-    }
+  #band-name, #nav ul { display: none; }
+  #nav .nav-items { display: block; }
+  #nav #home-link { display: block; width: 100%; }
+  #nav-bottom { display: block; }
+  #motto {
+    display: block;
+    line-height: 2.6125;
+    text-align: center;
+    width: 100%;
   }
 }
 
@@ -123,6 +137,10 @@ footer {
   font-size: 82.5%;
   padding-top: 1.5em;
   padding-bottom: 1.5em;
+}
+
+@media screen and (max-device-width: 480px) {
+  footer { text-align: center; }
 }
 
 a.big-action {
