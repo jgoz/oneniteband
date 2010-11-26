@@ -32,6 +32,14 @@ html {
   padding-right: 2em;
 }
 
+@media screen and (max-device-width: 480px) {
+  #nav, #main, footer {
+    margin: 0;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+}
+
 header {
   background: url(/static/images/header_ray.png) no-repeat center top;
   height: 210px;
@@ -46,21 +54,32 @@ header {
   a { text-decoration: none; }
 }
 
+@media screen and (max-device-width: 480px) {
+  header {
+    background: url(/static/images/header_ray.png) no-repeat center -40px;
+    height: 170px;
+  }
+
+  #site-title { top: 60px; }
+}
+
 #nav {
   background-color: $nav-bg;
   color: $onb-almost-white;
   height: 2em;
   line-height: 2;
-  
-  a, a:link, a:visited { color: $onb-almost-white;}
+
+  a, a:link, a:visited { color: $onb-almost-white; }
   a:hover, a:active { color: white; }
 
+  .nav-items { display: table; width: 100%; }
+  ul, #home-link { display: table-cell; width: 50%; }
+  
   ul {
-    float: right;
     list-style-type: none;
     margin-left: 0;
+    padding: 0;
     text-align: right;
-    width: 50%;
   }
 
   li {
@@ -76,6 +95,22 @@ header {
 #band-name:after { content: ' \203A'; font-weight: bold; } // &rsaquo;
 #motto { font-size: 82.5%; }
 
+@media screen and (max-width: 480px) {
+  #nav {
+    #home-link { display: none; }
+    .nav-items { display: block; }
+    ul {
+      display: block;
+      text-align: center;
+      width: 100%;
+    }
+    li {
+      margin-left: 0;
+      margin-right: 1em;
+    }
+  }
+}
+
 #main {
   background: $main-bg;
   min-height: 15em;
@@ -87,6 +122,7 @@ footer {
   color: $onb-almost-white;
   font-size: 82.5%;
   padding-top: 1.5em;
+  padding-bottom: 1.5em;
 }
 
 a.big-action {
@@ -136,6 +172,19 @@ a.big-action {
   .big-action { vertical-align: middle; }
 }
 
+@media screen and (max-width: 640px) {
+  .blocks {
+    display: block;
+    margin: 0;
+  }
+  .block, #call-to-action {
+    @include box-sizing(border-box);
+    display: block;
+    width: 100%;
+  }
+  .block { margin: 0.5em 0; }
+}
+
 #gigs {
   background-color: $nav-bg;
   color: $onb-almost-white;
@@ -149,4 +198,8 @@ a.big-action {
 
   .gig:after { content: ' \2022 '; } // &bull;
   .gig:last-child:after { content: ''; }
+}
+
+@media screen and (max-width: 480px) {
+  #gigs { height: auto; }
 }
