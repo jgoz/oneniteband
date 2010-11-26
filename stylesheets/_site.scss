@@ -159,7 +159,7 @@ a.big-action {
   h2 {
     color: $onb-blue-very-dark;
     @include text-shadow($onb-blue-light, 1px, 0, 1px);
-    letter-spacing: -2px;
+    letter-spacing: -1px;
   }
 }
 
