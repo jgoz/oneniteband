@@ -30,7 +30,7 @@ def index():
 @app.get('/bio')
 @templated()
 def bio():
-    return None
+    return dict(band_bio=data.get_band_bio(db), bios=data.get_member_bios(db))
 
 if __name__ == '__main__':
     app.config.from_object(__name__)

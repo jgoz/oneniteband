@@ -3,9 +3,31 @@
 {% block title %}Band and member biographies{% endblock %}
 {% block pagedesc %}TODO: One nite band is blah blah{% endblock %}
 {% block pageauthor %}One Nite Band{% endblock %}
+{% block bodyid %}bios{% endblock %}
 
 {% block content %}
 <h1>A little about us&hellip;</h1>
 
-<p><strong>One Nite Band</strong> has been the life of the party at all kinds of weddings and events in the Calgary area since 2002. Our vocalists trained with the Youth Singers of Calgary. Our rhythm and horn players have been playing jazz, rock and pop for more years than we'd care to mention. Some of us have even played internationally &mdash; in Cuba &mdash; during a hurricane.</p>
+{% if not band_bio %}
+  <p class='error'>No bio available for One Nite Band! You may wish to add one&hellip;</p>
+{% else %}
+  <div class='bio'>
+    {{ band_bio.content|safe }}
+    {% if band_bio.image %}
+    <img src='{{ band_bio.image }}' alt='{{ band_bio.name }}'>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% if not bios %}
+  <p class='error'>No member bios have been added! Surely the band has at least one member&hellip;</p>
+{% endif %}
+
+{% for bio in bios %}
+  <div class='bio {{ loop.cycle("odd", "even") }}'>
+    <h2>{{ bio.name }}</h2>
+    {{ bio.content|safe }}
+  </div>
+{% endfor %}
+
 {% endblock %}

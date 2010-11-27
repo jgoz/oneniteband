@@ -222,3 +222,12 @@ h1 {
 @media screen and (max-width: 480px) {
   #gigs { height: auto; }
 }
+
+.bio p {
+  max-width: 40em;
+}
+
+.error {
+  color: $error-fg;
+  font-weight: bold;
+}

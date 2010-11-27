@@ -30,7 +30,7 @@
   <script src="{{ url_for('static', filename='js/libs/modernizr-1.6.min.js') }}"></script>
 </head>
 
-<body>
+<body id='{% block bodyid %}{% endblock %}'>
   <header>
     <h1 id='site-title'>
       <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt='One Nite Band' /></a>
