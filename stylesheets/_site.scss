@@ -107,9 +107,9 @@ header {
 
 #band-name {
   font-weight: bold;
+  margin-right: 0.5em;
   a { text-decoration: none; }
 }
-#band-name:after { content: ' \203A'; font-weight: bold; } // &rsaquo;
 #motto { font-size: 82.5%; }
 
 @media screen and (max-width: 480px) {
@@ -149,11 +149,12 @@ a.big-action {
   font-weight: bold;
 }
 
-#intro {
-  @include header-rhythm(200%);
+h1 {
   color: $onb-blue-very-dark;
   letter-spacing: -2px;
 }
+
+#intro { @include header-rhythm(200%); }
 
 .blocks {
   border-spacing: 0.5em 0;
