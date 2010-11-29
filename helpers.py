@@ -1,4 +1,5 @@
-from flask import Flask, g, redirect, render_template, request, url_for
+from cryptacular.bcrypt import BCRYPTPasswordManager
+from flask import Flask, g, redirect, render_template, request, session, url_for
 from functools import wraps
 
 class RestFlask(Flask):
@@ -39,8 +40,15 @@ def login_required(f):
     """Indicates user must be logged in to access view."""
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if g.user is None:
+        if session['user'] is None:
             return redirect(url_for('login', next=request.url))
         return f(*args, **kwargs)
     return decorated_function
 
+def check_password(user, password):
+    if not user:
+        raise 'User `' + username + '` not found.'
+    bcrypt = BCRYPTPasswordManager()
+    if not bcrypt.check(user.hash, password):
+        raise 'Password given for `' + username + '` does not match.'
+    return True

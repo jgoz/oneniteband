@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}Administration login{% endblock %}
+{% block pagedesc %}TODO: One nite band is blah blah{% endblock %}
+{% block pageauthor %}One Nite Band{% endblock %}
+{% block bodyid %}session{% endblock %}
+
+{% block content %}
+
+<h1>Administrator Login</h1>
+<p class='success'>Logged in successfully as {{ username }}.</p>
+<p><a href="{{ url_for('index') }}">&laquo; Go Home</a></p>
+
+{% endblock %}

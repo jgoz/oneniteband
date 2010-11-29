@@ -1,6 +1,7 @@
 import data
 from datetime import datetime
-from helpers import RestFlask, templated
+from flask import g, render_template, request, session
+from helpers import RestFlask, templated, check_password
 
 # Development configuration
 DATABASE = 'sqlite:///db/onb-dev.db'
@@ -32,6 +33,31 @@ def index():
 def bio():
     return dict(band_bio=data.get_band_bio(db), bios=data.get_member_bios(db))
 
+@app.get('/session')
+@templated()
+def start_session():
+    return None
+
+@app.post('/session')
+@templated()
+def create_session():
+    username, password = request.form['username'], request.form['password']
+    user = data.get_admin(db, username)
+    try:
+        check_password(user, password)
+    except:
+        return render_template('start_session.html', error='Username and password do not match.', username=username, password=password)
+    else:
+        session['user'] = dict(username=user.username)
+        return session['user']
+
 if __name__ == '__main__':
-    app.config.from_object(__name__)
-    app.run(host='0.0.0.0', debug=True)
+    def adduser(username, password):
+        return data.add_admin(db, username.trim(), password.trim())
+
+    import sys
+    if len(sys.argv) == 1:
+        app.config.from_object(__name__)
+        app.run(host='0.0.0.0', debug=True)
+    elif len(sys.argv) == 4 and sys.argv[1] == 'adduser':
+        print adduser(sys.argv[2], sys.argv[3])

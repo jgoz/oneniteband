@@ -17,3 +17,10 @@ create table bio (
   image varchar(255),
   timestamp datetime not null
 );
+
+drop table if exists admin;
+
+create table admin (
+  username varchar(30) primary key,
+  hash varchar(255) not null
+);

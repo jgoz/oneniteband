@@ -1,3 +1,4 @@
+from cryptacular.bcrypt import BCRYPTPasswordManager
 from datetime import datetime
 from sqlalchemy import create_engine, MetaData, Table
 
@@ -23,3 +24,12 @@ def get_band_bio(db):
 def get_member_bios(db):
     bio = db.table('bio')
     return bio.select(bio.c.type == 'member').order_by(bio.c.name).execute().fetchall()
+
+def get_admin(db, username):
+    admin = db.table('admin')
+    return admin.select(admin.c.username == username).execute().first()
+
+def add_admin(db, username, password):
+    bcrypt = BCRYPTPasswordManager()
+    admin = db.table('admin')
+    return admin.insert(values=dict(username=username, hash=bcrypt.encode(password))).execute()

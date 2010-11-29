@@ -231,3 +231,9 @@ h1 {
   color: $error-fg;
   font-weight: bold;
 }
+
+#session {
+  input[type='text'], input[type='password'] {
+    display: block;
+  }
+}
