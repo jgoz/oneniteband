@@ -1,7 +1,7 @@
 import data
 from datetime import datetime
-from flask import g, render_template, request, session
-from helpers import RestFlask, templated, check_password
+from flask import flash, g, redirect, render_template, request, session, url_for
+from helpers import RestFlask, templated, check_password, MethodRewriteMiddleware
 
 # Development configuration
 DATABASE = 'sqlite:///db/onb-dev.db'
@@ -12,6 +12,7 @@ PASSWORD = 'default'
 
 app = RestFlask(__name__)
 app.config.from_envvar('ONB_SETTINGS', silent=True)
+app.wsgi_app = MethodRewriteMiddleware(app.wsgi_app)
 
 db = data.Database(app.config.get('DATABASE', DATABASE))
 
