@@ -50,7 +50,25 @@
     </div>
   </div>
 
-  <div id="main">
+  <div id='main'>
+    {% if user %}
+    <div id='user-ctl'>
+      <span>{{ user.username }}</span>
+      <form method='post' action="{{ url_for('destroy_session') }}?__METHOD_OVERRIDE__=DELETE">
+        <input type='hidden' name='_method' value='DELETE'>
+        <input type='submit' class='link-button' value='Log out'>
+      </form>
+    </div>
+    {% endif %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <p class='{{ category }}'>{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
     {% block content %}{% endblock %}
   </div>
 

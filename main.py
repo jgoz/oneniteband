@@ -20,6 +20,10 @@ db = data.Database(app.config.get('DATABASE', DATABASE))
 def inject_now():
     return dict(now=datetime.now())
 
+@app.context_processor
+def inject_user():
+    return dict(user=session['user'])
+
 @app.template_filter('gigdate')
 def gigdate_filter(dt):
     return dt.strftime('%b %d')

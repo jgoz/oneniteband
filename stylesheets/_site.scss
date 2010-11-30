@@ -125,11 +125,23 @@ header {
   }
 }
 
+#user-ctl {
+  position: absolute;
+  right: 2em;
+  top: 0.25em;
+  text-align: right;
+  width: 15em;
+
+  form { display: inline; }
+  span { padding-right: 0.5em; }
+}
+
 #main {
   background: $main-bg;
   min-height: 15em;
   padding-top: 1.5em;
   padding-bottom: 1.5em;
+  position: relative;
 }
 
 footer {
@@ -147,6 +159,21 @@ a.big-action {
   @include buttonize($onb-purple, $font-size-base*3px);
   font-size: 1.75em;
   font-weight: bold;
+}
+
+input.link-button {
+  background: transparent;
+  border: none;
+  color: $link-fg;
+  cursor: pointer;
+  display: inline;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+  vertical-align: baseline;
+
+  &:hover, &:active { color: $link-hover-fg; }
 }
 
 h1 {
@@ -227,10 +254,10 @@ h1 {
   max-width: 40em;
 }
 
-.error {
-  color: $error-fg;
-  font-weight: bold;
-}
+.success, .message, .error { font-weight: bold; }
+.success { color: $success-fg; }
+.message { color: $message-fg; }
+.error { color: $error-fg; }
 
 #session {
   input[type='text'], input[type='password'] {
