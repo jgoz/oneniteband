@@ -10,11 +10,13 @@ $text-fg: #444;
 $link-fg: $onb-blue;
 $link-hover-fg: lighten($link-fg, 30%);
 
-$highlight-fg: #000;
-$highlight-bg: #dbf94a;
-$error-fg: #871c12;
-
 $container-bg: #e1b738;
 $main-bg: $onb-almost-white;
 $nav-bg: $onb-blue-very-dark;
 $border-fg: #afafaf;
+
+$highlight-fg: #000;
+$highlight-bg: #dbf94a;
+$success-fg: #145615;
+$message-fg: darken($container-bg, 15%);
+$error-fg: #871c12;
