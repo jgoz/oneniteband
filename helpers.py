@@ -48,10 +48,10 @@ def login_required(f):
 
 def check_password(user, password):
     if not user:
-        raise 'User `' + username + '` not found.'
+        return False
     bcrypt = BCRYPTPasswordManager()
     if not bcrypt.check(user.hash, password):
-        raise 'Password given for `' + username + '` does not match.'
+        return False
     return True
 
 class MethodRewriteMiddleware(object):

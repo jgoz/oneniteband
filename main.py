@@ -44,17 +44,20 @@ def start_session():
     return None
 
 @app.post('/session')
-@templated()
 def create_session():
     username, password = request.form['username'], request.form['password']
     user = data.get_admin(db, username)
-    try:
-        check_password(user, password)
-    except:
+    if not check_password(user, password):
         return render_template('start_session.html', error='Username and password do not match.', username=username, password=password)
-    else:
-        session['user'] = dict(username=user.username)
-        return session['user']
+    session['user'] = dict(username=user.username)
+    flash('You were logged in successfully, %s.' % (username,), 'success')
+    return redirect(url_for('index'))
+
+@app.delete('/session')
+def destroy_session():
+    session['user'] = None
+    flash('You were logged out successfully.')
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     def adduser(username, password):
