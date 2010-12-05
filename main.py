@@ -22,7 +22,7 @@ def inject_now():
 
 @app.context_processor
 def inject_user():
-    return dict(user=session['user'])
+    return dict(user=session.get('user', None))
 
 @app.template_filter('gigdate')
 def gigdate_filter(dt):
