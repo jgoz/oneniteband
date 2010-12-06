@@ -74,13 +74,11 @@ header {
 }
 
 #nav {
-  display: table;
-  width: 100%;
-
-  #band-name, #motto, ul { display: table-cell; width: 33%; }
+  #band-name, #motto { display: inline-block; width: 33%; }
   #motto { text-align: center; }
   
   ul {
+    float: right;
     list-style-type: none;
     margin-left: 0;
     padding: 0;
@@ -90,6 +88,7 @@ header {
   li {
     display: inline-block;
     margin-left: 1em;
+    &:first-child { margin-left: 0; }
   }
 }
 
@@ -110,12 +109,11 @@ header {
 
 #band-name {
   font-weight: bold;
-  margin-right: 0.5em;
   a { text-decoration: none; }
 }
 #motto { font-size: 87.5%; }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   #nav {
     display: block;
     padding: 0;
