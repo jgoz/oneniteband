@@ -15,7 +15,7 @@ class Database(object):
 
 def get_upcoming_gigs(db):
     gig = db.table('gig')
-    return gig.select(gig.c.date > datetime.now).limit(5).order_by(gig.c.date).execute()
+    return gig.select(gig.c.date > datetime.now).limit(5).order_by(gig.c.date).execute().fetchall()
 
 def get_band_bio(db):
     bio = db.table('bio')

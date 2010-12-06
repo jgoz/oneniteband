@@ -30,10 +30,13 @@
   <a class='big-action' href=''>Book Us!</a> or <a href='{{ url_for('bio') }}'>find out more</a>.
 </div>
 
+{% if gigs %}
 <div id='gigs'>
   <span class='upcoming'>Next event</span>
   {% for gig in gigs %}
     <span class='gig'>{{ gig.title }} {% if gig.place %} at {{ gig.place }} {% endif %} on {{ gig.date|gigdate }}</span>
   {% endfor %}
 </div>
+{% endif %}
+
 {% endblock %}
