@@ -8,15 +8,20 @@
 {% block content %}
 <h1>A little about us&hellip;</h1>
 
+<div id='band_bio' class='bio editable'>
 {% if not band_bio %}
   <p class='error'>No bio available for One Nite Band! You may wish to add one&hellip;</p>
 {% else %}
-  <div class='bio'>
+  <div class='content'>
     {{ band_bio.content|safe }}
-    {% if band_bio_img %}
-    <img src='{{ band_bio_img.image }}' alt='{{ band_bio_img.content }}'>
-    {% endif %}
   </div>
 {% endif %}
+</div>
+
+<div id='band_bio_img' class='editable'>
+{% if band_bio_img %}
+  <img src='{{ band_bio_img.image }}' alt='{{ band_bio_img.content }}' class='image'>
+{% endif %}
+</div>
 
 {% endblock %}
