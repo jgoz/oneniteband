@@ -13,21 +13,10 @@
 {% else %}
   <div class='bio'>
     {{ band_bio.content|safe }}
-    {% if band_bio.image %}
-    <img src='{{ band_bio.image }}' alt='{{ band_bio.name }}'>
+    {% if band_bio_img %}
+    <img src='{{ band_bio_img.image }}' alt='{{ band_bio_img.content }}'>
     {% endif %}
   </div>
 {% endif %}
-
-{% if not bios %}
-  <p class='error'>No member bios have been added! Surely the band has at least one member&hellip;</p>
-{% endif %}
-
-{% for bio in bios %}
-  <div class='bio {{ loop.cycle("odd", "even") }}'>
-    <h2>{{ bio.name }}</h2>
-    {{ bio.content|safe }}
-  </div>
-{% endfor %}
 
 {% endblock %}

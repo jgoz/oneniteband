@@ -36,7 +36,8 @@ def index():
 @app.get('/bio')
 @templated()
 def bio():
-    return dict(band_bio=data.get_band_bio(db), bios=data.get_member_bios(db))
+    return dict(band_bio=data.get_content(db, 'band_bio'),
+                band_bio_img=data.get_content(db, 'band_bio_img'))
 
 @app.get('/session')
 @templated()

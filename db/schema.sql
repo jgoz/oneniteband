@@ -7,13 +7,12 @@ create table gig (
   place varchar(50)
 );
 
-drop table if exists bio;
+drop table if exists bio; -- renamed to content
+drop table if exists content;
 
-create table bio (
+create table content (
   slug varchar(20) primary key,
-  type varchar(15) not null,
-  name varchar(50) not null,
-  content text not null,
+  content text,
   image varchar(255),
   timestamp datetime not null
 );
