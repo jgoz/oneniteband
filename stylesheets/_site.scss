@@ -74,8 +74,11 @@ header {
 }
 
 #nav {
-  .nav-items { display: table; width: 100%; }
-  ul, #home-link { display: table-cell; width: 50%; }
+  display: table;
+  width: 100%;
+
+  #band-name, #motto, ul { display: table-cell; width: 33%; }
+  #motto { text-align: center; }
   
   ul {
     list-style-type: none;
@@ -110,19 +113,22 @@ header {
   margin-right: 0.5em;
   a { text-decoration: none; }
 }
-#motto { font-size: 82.5%; }
+#motto { font-size: 87.5%; }
 
 @media screen and (max-width: 480px) {
-  #band-name, #nav ul { display: none; }
-  #nav .nav-items { display: block; }
-  #nav #home-link { display: block; width: 100%; }
-  #nav-bottom { display: block; }
-  #motto {
+  #nav {
     display: block;
-    line-height: 2.6125;
-    text-align: center;
-    width: 100%;
+    padding: 0;
+
+    #band-name, ul { display: none; }
+    #motto {
+      display: block;
+      line-height: (2 / 0.875);
+      text-align: center;
+      width: 100%;
+    }
   }
+  #nav-bottom { display: block; }
 }
 
 #user-ctl {
