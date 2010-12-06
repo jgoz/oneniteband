@@ -37,11 +37,14 @@ def templated(template=None):
         return decorated_function
     return decorator
 
+def current_user():
+    return session.get('user', None)
+
 def login_required(f):
     """Indicates user must be logged in to access view."""
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if session['user'] is None:
+        if current_user() is None:
             return redirect(url_for('login', next=request.url))
         return f(*args, **kwargs)
     return decorated_function

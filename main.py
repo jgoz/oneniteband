@@ -1,7 +1,7 @@
 import data
 from datetime import datetime
 from flask import flash, g, redirect, render_template, request, session, url_for
-from helpers import RestFlask, templated, check_password, MethodRewriteMiddleware
+from helpers import RestFlask, templated, current_user, check_password, MethodRewriteMiddleware
 
 # Development configuration
 DATABASE = 'sqlite:///db/onb-dev.db'
@@ -22,7 +22,7 @@ def inject_now():
 
 @app.context_processor
 def inject_user():
-    return dict(user=session.get('user', None))
+    return dict(user=current_user())
 
 @app.template_filter('gigdate')
 def gigdate_filter(dt):
@@ -62,7 +62,7 @@ def destroy_session():
 
 if __name__ == '__main__':
     def adduser(username, password):
-        return data.add_admin(db, username.trim(), password.trim())
+        return data.add_admin(db, username.strip(), password.strip())
 
     import sys
     if len(sys.argv) == 1:
