@@ -39,9 +39,9 @@ def bio():
     return dict(band_bio=data.get_content(db, 'band_bio'),
                 band_bio_img=data.get_content(db, 'band_bio_img'))
 
-@app.get('/session')
+@app.get('/login')
 @templated()
-def start_session():
+def login():
     return None
 
 @app.post('/session')
