@@ -70,12 +70,14 @@
     {% block content %}{% endblock %}
   </div>
 
-  <ul id='nav-bottom' class='nav'>
-    <li class='home'><a href="{{ url_for('index') }}">Home</a></li>
-    <li class='bio'><a href="{{ url_for('bio') }}">Bio</a></li>
-    <li class='photos'><a href="">Photos</a></li>
-    <li class='contact-us'><a href="">Contact Us!</a></li>
-  </ul>
+  <div id='nav-bottom' class='nav'>
+    <ul>
+      <li class='home'><a href="{{ url_for('index') }}">Home</a></li>
+      <li class='bio'><a href="{{ url_for('bio') }}">Bio</a></li>
+      <li class='photos'><a href="">Photos</a></li>
+      <li class='contact-us'><a href="">Contact Us!</a></li>
+    </ul>
+  </div>
   <div id='footer'>
     <p id='mini-about'>One Nite Band plays in and around Calgary, Alberta.</p>
     <p id='copyright'>Copyright &copy; {{ now.year }} One Nite Band dot com.</p>

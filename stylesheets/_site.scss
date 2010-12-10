@@ -25,7 +25,7 @@ html {
   background: $container-bg;
 }
 
-#nav, #main, #footer {
+.nav, #main, #footer {
   margin: 0px auto;
   max-width: 1152px;
   padding-left: 2em;
@@ -33,7 +33,7 @@ html {
 }
 
 @media screen and (max-device-width: 480px) {
-  #nav, #main, #footer {
+  .nav, #main, #footer {
     margin: 0;
     padding-left: 0.5em;
     padding-right: 0.5em;
@@ -48,8 +48,9 @@ header {
 #site-title {
   margin: 0 auto;
   position: relative;
-  top: 100px;
-  width: 144px;
+  top: 75px;
+  left: 3px;
+  width: 187px;
 
   a { text-decoration: none; }
 }
@@ -79,6 +80,8 @@ header {
   }
 }
 
+#index .nav .home { display: none; }
+
 #nav {
   #band-name, #motto { display: inline-block; width: 33%; }
   #motto { text-align: center; }
@@ -104,13 +107,21 @@ header {
   }
 }
 
+#index #nav { display: none; }
+
 #nav-bottom {
   display: none;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  text-align: left;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
 
   li {
     display: inline-block;
@@ -118,6 +129,8 @@ header {
     &:last-child { margin-right: 0; }
   }
 }
+
+#index #nav-bottom { display: block; }
 
 #band-name {
   font-weight: bold;
@@ -138,7 +151,12 @@ header {
       width: 100%;
     }
   }
-  #nav-bottom { display: block; }
+
+  #nav-bottom {
+    display: block;
+    padding: 0;
+    text-align: center;
+  }
 }
 
 #user-ctl {
@@ -159,6 +177,8 @@ header {
   padding-bottom: 1.5em;
   position: relative;
 }
+
+#index #main { padding-top: 0; }
 
 #footer {
   color: $onb-almost-white;
@@ -197,9 +217,16 @@ input.link-button {
 h1 {
   color: $onb-blue-very-dark;
   letter-spacing: -2px;
-}
 
-#intro { @include header-rhythm(200%); }
+  &.intro {
+    @include header-rhythm(200%); 
+    @include text-shadow(rgba(0,0,0,0.25), 0, -1px, 0);
+    color: $onb-almost-white;
+    background: $onb-blue-very-dark;
+    margin: 0 -1em;
+    padding: 0.75em 1em;
+  }
+}
 
 .blocks {
   border-spacing: 0.5em 0;
