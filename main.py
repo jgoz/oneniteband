@@ -49,7 +49,7 @@ def create_session():
     username, password = request.form['username'], request.form['password']
     user = data.get_admin(db, username)
     if not check_password(user, password):
-        return render_template('start_session.html', error='Username and password do not match.', username=username, password=password)
+        return render_template('login.html', error='Username and password do not match.', username=username, password=password)
     session['user'] = dict(username=user.username)
     flash('You were logged in successfully, %s.' % (username,), 'success')
     return redirect(url_for('index'))

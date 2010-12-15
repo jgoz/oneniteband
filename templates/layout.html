@@ -48,7 +48,9 @@
     </div>
   </div>
 
+  {% block precontent %}{% endblock %}
   <div id='main'>
+
     {% if user %}
     <div id='user-ctl'>
       <span>{{ user.username }}</span>

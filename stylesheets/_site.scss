@@ -1,5 +1,7 @@
 @import "compass/css3";
 
+$main-max-width: 1152px;
+
 @mixin buttonize($base_color: #5291C5, $button_size: $font-size-base*2px) {
   @include box-sizing(border-box);
   @include border-radius($button_size/4);
@@ -27,7 +29,7 @@ html {
 
 .nav, #main, #footer {
   margin: 0px auto;
-  max-width: 1152px;
+  max-width: $main-max-width;
   padding-left: 2em;
   padding-right: 2em;
 }
@@ -170,6 +172,8 @@ header {
   span { padding-right: 0.5em; }
 }
 
+#index #user-ctl { top: 0; }
+
 #main {
   background: $main-bg;
   min-height: 15em;
@@ -223,7 +227,8 @@ h1 {
     @include text-shadow(rgba(0,0,0,0.25), 0, -1px, 0);
     color: $onb-almost-white;
     background: $onb-blue-very-dark;
-    margin: 0 -1em;
+    margin: 0 auto;
+    max-width: $main-max-width;
     padding: 0.75em 1em;
   }
 }
@@ -305,6 +310,10 @@ h1 {
 .success { color: $success-fg; }
 .message { color: $message-fg; }
 .error { color: $error-fg; }
+
+#index {
+  .success, .message, .error { margin: 0; padding-top: 1.5em; }
+}
 
 #session {
   input[type='text'], input[type='password'] {
