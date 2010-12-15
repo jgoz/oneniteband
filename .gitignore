@@ -3,6 +3,5 @@
 *.swp
 .sass-cache
 static/css
-static/js/*.js
 db/*.db
 Thumbs.db
