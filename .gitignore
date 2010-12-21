@@ -2,6 +2,7 @@
 *.pyo
 *.swp
 .sass-cache
+aliases
 static/css
 db/*.db
 Thumbs.db
