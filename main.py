@@ -39,6 +39,13 @@ def bio():
     return dict(band_bio=data.get_content(db, 'band_bio'),
                 band_bio_img=data.get_content(db, 'band_bio_img'))
 
+@app.put('/content')
+def save_content():
+    id, content = request.form['id'], request.form['content']
+    if request.is_xhr:
+        return data.save_content(db, id, content)
+    return redirect(url_for('bio'))
+
 @app.get('/login')
 @templated()
 def login():

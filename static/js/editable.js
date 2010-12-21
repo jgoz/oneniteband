@@ -8,18 +8,79 @@
       return this.each(function() {
         var $this = $(this),
             data = $this.data('editable'),
+
             editlink = $('<a />', {
-              href : 'javascript:void(null);',
-              text : 'Edit'
-            });
+              href: 'javascript:void(null);',
+              class: 'edit',
+              text: 'Edit'
+            }),
+
+            savelink = $('<input>', {
+              type: 'submit',
+              value: 'Save',
+              class: 'link-button save',
+              style: 'display: none'
+            }),
+            
+            cancellink = $('<a />', {
+              href: 'javascript:void(null);',
+              class: 'cancel',
+              text: 'Cancel',
+              style: 'display: none'
+            }),
+            
+            content = $this.find('.content');
 
         if (!data) {
           editlink.click(function() {
-            $this.find('.content').hide();
-            $this.find('.content').before($('<p>Testing 123</p>'));
+            content.hide();
+            editlink.hide();
+            savelink.show();
+            cancellink.show();
+
+            content.before($('<textarea>', {
+              text: $.trim(content.html()),
+              name: 'content'
+            }));
           });
 
-          $this.find('.content').prepend(editlink);
+          function reset() {
+            $this.find('textarea').remove();
+            content.show();
+            editlink.show();
+            savelink.hide();
+            cancellink.hide();
+          }
+
+          cancellink.click(reset);
+          savelink.click(function() {
+            var form = $this.find('form');
+            $.ajax({
+              type: 'PUT',
+              url: form.attr('action'),
+              data: form.serialize(),
+              success: function(data, status, xhr) {
+                content.html(data);
+                reset();
+              }
+            });
+
+            return false;
+          });
+
+          content.before(editlink);
+          content.before(savelink);
+          content.before(cancellink);
+          content.before($('<input>', {
+            type: 'hidden',
+            name: 'id',
+            value: $this.attr('id')
+          }));
+
+          $this.wrapInner($('<form>', {
+            method: 'post',
+            action: settings.saveAction + '?__METHOD_OVERRIDE__=PUT'
+          }));
 
           $(this).data('editable', {
             target : $this,

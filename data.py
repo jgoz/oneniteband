@@ -21,6 +21,11 @@ def get_content(db, slug):
     content = db.table('content')
     return content.select(content.c.slug == slug).limit(1).execute().first()
 
+def save_content(db, slug, value):
+    content = db.table('content')
+    content.update().where(content.c.slug == slug).values(content=value).execute()
+    return value
+
 def get_admin(db, username):
     admin = db.table('admin')
     return admin.select(admin.c.username == username).execute().first()

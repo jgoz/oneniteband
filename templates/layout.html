@@ -98,7 +98,9 @@
   {% if user %}
   <script>
     $(function() {
-      $('.editable').editable({});
+      $('.editable').editable({
+        saveAction: "{{ url_for('save_content') }}"
+      });
     });
   </script>
   {% endif %}
