@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% from '_form_macros.html' import form_field %}
+
+{% block title %}Administration signup{% endblock %}
+{% block pagedesc %}TODO: One nite band is blah blah{% endblock %}
+{% block pageauthor %}One Nite Band{% endblock %}
+{% block bodyid %}session{% endblock %}
+
+{% block content %}
+<h1>Administrator Signup</h1>
+
+<p>Please choose a nickname.</p>
+<form method='post' action='{{ current_url }}' enctype='multipart/form-data'>
+  <p>
+    {{ form_field(form.nickname) }}
+  </p>
+
+  <input type='submit' name='submit' value='Sign up!'>
+</form>
+
+{% endblock %}

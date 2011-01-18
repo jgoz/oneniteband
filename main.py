@@ -1,79 +1,40 @@
-import data
-from datetime import datetime
-from flask import flash, g, redirect, render_template, request, session, url_for
-from helpers import RestFlask, templated, current_user, check_password, MethodRewriteMiddleware
+import os
+import sys
 
-# Development configuration
-DATABASE = 'sqlite:///db/onb-dev.db'
-DEBUG = True
-SECRET_KEY = 'th1$ is the s0ng that d03$n"t eeennnnnddd!@@@!&%'
-USERNAME = 'admin'
-PASSWORD = 'default'
+if 'lib' not in sys.path:
+    # Add /lib as primary libraries directory, with fallback to /distlib
+    # and optionally to distlib loaded using zipimport.
+    sys.path[0:0] = ['lib', 'distlib', 'distlib.zip']
 
-app = RestFlask(__name__)
-app.config.from_envvar('ONB_SETTINGS', silent=True)
-app.wsgi_app = MethodRewriteMiddleware(app.wsgi_app)
+import config
+import tipfy
+import urls
 
-db = data.Database(app.config.get('DATABASE', DATABASE))
+def enable_appstats(app):
+    """Enables appstats middleware."""
+    if debug:
+        return
 
-@app.context_processor
-def inject_now():
-    return dict(now=datetime.now())
+    from google.appengine.ext.appstats.recording import appstats_wsgi_middleware
+    app.wsgi_app = appstats_wsgi_middleware(app.wsgi_app)
 
-@app.context_processor
-def inject_user():
-    return dict(user=current_user())
+def enable_jinja2_debugging():
+    """Enables blacklisted modules that help Jinja2 debugging."""
+    if not debug:
+        return
 
-@app.template_filter('gigdate')
-def gigdate_filter(dt):
-    return dt.strftime('%b %d')
+    # This enables better debugging info for errors in Jinja2 templates.
+    from google.appengine.tools.dev_appserver import HardenedModulesHook
+    HardenedModulesHook._WHITE_LIST_C_MODULES += ['_ctypes', 'gestalt']
 
-@app.get('/')
-@templated()
-def index():
-    return dict(gigs=data.get_upcoming_gigs(db))
+# Is this the development server?
+debug = os.environ.get('SERVER_SOFTWARE', '').startswith('Dev')
 
-@app.get('/bio')
-@templated()
-def bio():
-    return dict(band_bio=data.get_content(db, 'band_bio'),
-                band_bio_img=data.get_content(db, 'band_bio_img'))
+# Instantiate the application.
+app = tipfy.make_wsgi_app(rules=urls.rules, config=config.config, debug=debug)
 
-@app.put('/content')
-def save_content():
-    id, content = request.form['id'], request.form['content']
-    if request.is_xhr:
-        return data.save_content(db, id, content)
-    return redirect(url_for('bio'))
-
-@app.get('/login')
-@templated()
-def login():
-    return None
-
-@app.post('/session')
-def create_session():
-    username, password = request.form['username'], request.form['password']
-    user = data.get_admin(db, username)
-    if not check_password(user, password):
-        return render_template('login.html', error='Username and password do not match.', username=username, password=password)
-    session['user'] = dict(username=user.username)
-    flash('You were logged in successfully, %s.' % (username,), 'success')
-    return redirect(url_for('index'))
-
-@app.delete('/session')
-def destroy_session():
-    session['user'] = None
-    flash('You were logged out successfully.')
-    return redirect(url_for('index'))
+def main():
+    app.run()
 
 if __name__ == '__main__':
-    def adduser(username, password):
-        return data.add_admin(db, username.strip(), password.strip())
-
-    import sys
-    if len(sys.argv) == 1:
-        app.config.from_object(__name__)
-        app.run(host='0.0.0.0', debug=True)
-    elif len(sys.argv) == 4 and sys.argv[1] == 'adduser':
-        print adduser(sys.argv[2], sys.argv[3])
+    main()

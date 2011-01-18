@@ -1,36 +1,33 @@
-from cryptacular.bcrypt import BCRYPTPasswordManager
 from datetime import datetime
-from sqlalchemy import create_engine, MetaData, Table
+from google.appengine.ext import db
 
-class Database(object):
-    def __init__(self, dbstr):
-        self.engine = create_engine(dbstr, convert_unicode=True)
-        self.metadata = MetaData(bind=self.engine, reflect=True)
+class Gig(db.Model):
+    date = db.DateProperty()
+    title = db.StringProperty()
+    place = db.StringProperty()
 
-    def table(self, name):
-        return Table(name, self.metadata, autoload=True)
+    @staticmethod
+    def get_upcoming():
+        return Gig.all().filter('date >', datetime.now()).order('-date').fetch(5)
 
-    def conn(self):
-        return engine.connect()
+class TextContent(db.Model):
+    text = db.TextProperty()
+    timestamp = db.DateTimeProperty()
 
-def get_upcoming_gigs(db):
-    gig = db.table('gig')
-    return gig.select(gig.c.date > datetime.now).limit(5).order_by(gig.c.date).execute().fetchall()
+    @staticmethod
+    def for_key(key):
+        return TextContent.get_by_key_name(key)
 
-def get_content(db, slug):
-    content = db.table('content')
-    return content.select(content.c.slug == slug).limit(1).execute().first()
+    @staticmethod
+    def save(key, text):
+        content = TextContent(key_name=key, text=text)
+        content.put()
+        return content
 
-def save_content(db, slug, value):
-    content = db.table('content')
-    content.update().where(content.c.slug == slug).values(content=value).execute()
-    return value
+class AuthorizedEmail(db.Model):
+    email = db.EmailProperty()
 
-def get_admin(db, username):
-    admin = db.table('admin')
-    return admin.select(admin.c.username == username).execute().first()
+    @staticmethod
+    def check(email):
+        return AuthorizedEmail.all().filter('email =', email).count() > 0
 
-def add_admin(db, username, password):
-    bcrypt = BCRYPTPasswordManager()
-    admin = db.table('admin')
-    return admin.insert(values=dict(username=username, hash=bcrypt.encode(password))).execute()

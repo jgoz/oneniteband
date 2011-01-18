@@ -1,0 +1,20 @@
+application: oneniteband
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /(robots\.txt|favicon\.ico|opensearch\.xml|crossdomain\.xml|apple-touch-icon\.png)
+  static_files: static/\1
+  upload: static/(.*)
+
+- url: /remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin
+
+- url: /static/([^/]+)/(.*\.(css|js|gif|png|jpg|jpeg|eot|svg|ttf|woff|ico))
+  static_files: static/\1/\2
+  upload: static/[^/]+/.*
+
+- url: .*
+  script: main.py

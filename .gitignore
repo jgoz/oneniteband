@@ -6,3 +6,5 @@ aliases
 static/css
 db/*.db
 Thumbs.db
+distlib
+apps
