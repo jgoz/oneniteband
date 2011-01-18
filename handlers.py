@@ -1,7 +1,7 @@
 from data import AuthorizedEmail, Gig, TextContent
 from datetime import datetime
 from django.utils import simplejson
-from tipfy import RequestHandler, Response, cached_property
+from tipfy import RequestHandler, Response, cached_property, redirect
 from tipfy.ext.auth import AppEngineAuthMixin, login_required, user_required
 from tipfy.ext.auth.google import GoogleMixin
 from tipfy.ext.jinja2 import Jinja2Mixin, get_env
@@ -87,7 +87,7 @@ class ImageContentHandler(BaseHandler):
 
 class AdminHandler(BaseHandler):
     def get(self, **kwargs):
-        return redirect(self.auth_login_url())
+        return redirect(self.auth_login_url(self.redirect_path()))
 
 class SignupForm(Form):
     nickname = fields.TextField('Nickname')
