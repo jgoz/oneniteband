@@ -1,6 +1,7 @@
 from data import AuthorizedEmail, Gig, TextContent
 from datetime import datetime
 from django.utils import simplejson
+from markdown import markdown
 from tipfy import RequestHandler, Response, cached_property, redirect
 from tipfy.ext.auth import AppEngineAuthMixin, login_required, user_required
 from tipfy.ext.auth.google import GoogleMixin
@@ -36,6 +37,7 @@ class BaseHandler(RestfulRequestHandler, AppEngineAuthMixin, Jinja2Mixin, AllSes
 
         jinja_env = get_env()
         jinja_env.filters['gigdate'] = gigdate
+        jinja_env.filters['markdown'] = markdown
 
         static_path = self.get_config('oneniteband', 'static_path')
         jinja_env.globals['static_path'] = lambda filename: static_path + filename
