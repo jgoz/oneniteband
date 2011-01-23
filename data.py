@@ -1,5 +1,6 @@
 from datetime import datetime
 from google.appengine.ext import db
+from markdown import markdown
 
 class Gig(db.Model):
     date = db.DateProperty()
@@ -13,6 +14,12 @@ class Gig(db.Model):
 class TextContent(db.Model):
     text = db.TextProperty()
     timestamp = db.DateTimeProperty()
+
+    def to_html(self):
+        return markdown(self.text)
+
+    def to_dict(self):
+        return {'raw': self.text, 'html': self.to_html()}
 
     @staticmethod
     def for_key(key):

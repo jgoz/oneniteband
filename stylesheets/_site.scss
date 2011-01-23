@@ -329,6 +329,8 @@ h1 {
   }
 
   textarea {
+    clear: left;
+    display: none;
     width: 40em;
     height: 10em;
   }

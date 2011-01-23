@@ -42,8 +42,7 @@
       <span id='band-name'><a href="{{ url_for('index') }}" title='Home page'>One Nite Band <span id='city'>Calgary</span></a></span>
       <span id='motto'>Music for all occasions</span>
       <ul>
-        <li class='bio'><a href="{{ url_for('bio') }}">Bio</a></li>
-        <li class='photos'><a href="">Photos</a></li>
+        <li class='bio'><a href="{{ url_for('bio') }}">About Us</a></li>
         <li class='contact-us'><a href="">Contact Us!</a></li>
       </ul>
     </div>
@@ -73,8 +72,7 @@
   <div id='nav-bottom' class='nav'>
     <ul>
       <li class='home'><a href="{{ url_for('index') }}">Home</a></li>
-      <li class='bio'><a href="{{ url_for('bio') }}">Bio</a></li>
-      <li class='photos'><a href="">Photos</a></li>
+      <li class='bio'><a href="{{ url_for('bio') }}">About Us</a></li>
       <li class='contact-us'><a href="">Contact Us!</a></li>
     </ul>
   </div>
@@ -89,14 +87,15 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="{{ static_path('js/libs/jquery-1.4.4.min.js') }}"%3E%3C/script%3E'))</script>
   
+  {% if auth_session %}
   {# scripts should be concatenated and minified #}
+  <script src="{{ static_path('js/jquery.domify.js') }}"></script>
   <script src="{{ static_path('js/editable.js') }}"></script>
 
-  {% if user %}
   <script>
     $(function() {
       $('.editable').editable({
-        saveAction: "{{ url_for('save_content') }}"
+        saveAction: "{{ url_for('text-content', id='_id_') }}"
       });
     });
   </script>

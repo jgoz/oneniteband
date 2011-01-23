@@ -3,7 +3,7 @@ from datetime import datetime
 from django.utils import simplejson
 from markdown import markdown
 from tipfy import RequestHandler, Response, cached_property, redirect
-from tipfy.ext.auth import AppEngineAuthMixin, login_required, user_required
+from tipfy.ext.auth import AppEngineAuthMixin, login_required, user_required, admin_required
 from tipfy.ext.auth.google import GoogleMixin
 from tipfy.ext.jinja2 import Jinja2Mixin, get_env
 from tipfy.ext.session import AllSessionMixins, SessionMiddleware
@@ -61,21 +61,22 @@ class BioHandler(BaseHandler):
         return self.render_response('bio.html', band_bio=TextContent.for_key('band_bio'))
 
 class TextContentHandler(BaseHandler):
+    def _response_data(self, content):
+        return simplejson.dumps((content or TextContent(text='')).to_dict())
+
     def _content_response(self, content):
-        if not content:
-            return Response('', 'text/plain')
-        return Response(content.text, 'text/plain')
+        return Response(self._response_data(content), content_type='application/json')
 
     def get(self, id):
-        return _content_response(TextContent.for_key(id))
+        return self._content_response(TextContent.for_key(id))
 
-    @user_required
+    @admin_required
     def post(self, id):
-        return _content_response(TextContent.save(id, self.request.form.get('content')))
+        return self._content_response(TextContent.save(id, self.request.form.get('content')))
 
-    @user_required
+    @admin_required
     def put(self, id):
-        return _content_response(TextContent.save(id, self.request.form.get('content')))
+        return self._content_response(TextContent.save(id, self.request.form.get('content')))
 
 class ImageContentHandler(BaseHandler):
     def _content_response(self, content):
@@ -85,7 +86,7 @@ class ImageContentHandler(BaseHandler):
         return Response(content.image, content.mimetype)
 
     def get(self, id):
-        return _content_response(ImageContent.for_key(id))
+        return self._content_response(ImageContent.for_key(id))
 
 class AdminHandler(BaseHandler):
     def get(self, **kwargs):

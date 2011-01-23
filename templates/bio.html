@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 
+{% from '_content_macros.html' import text_content %}
+
 {% block title %}Band and member biographies{% endblock %}
 {% block pagedesc %}TODO: One nite band is blah blah{% endblock %}
 {% block pageauthor %}One Nite Band{% endblock %}
@@ -9,13 +11,7 @@
 <h1>A little about us&hellip;</h1>
 
 <div id='band_bio' class='bio editable'>
-{% if not band_bio %}
-  <p class='error content'>No bio available for One Nite Band! You may wish to add one&hellip;</p>
-{% else %}
-  <div class='content'>
-    {{ band_bio.text|markdown }}
-  </div>
-{% endif %}
+  {{ text_content(band_bio, auth_session) }}
 </div>
 
 <div id='band_bio_img' class='editable'>

@@ -29,7 +29,10 @@
               style: 'display: none'
             }),
             
-            content = $this.find('.content');
+            content = $this.find('.content'),
+            textarea = $this.find('textarea');
+
+        textarea.hide();
 
         if (!data) {
           editlink.click(function() {
@@ -37,15 +40,11 @@
             editlink.hide();
             savelink.show();
             cancellink.show();
-
-            content.before($('<textarea>', {
-              text: $.trim(content.html()),
-              name: 'content'
-            }));
+            textarea.css('display', 'block');
           });
 
           function reset() {
-            $this.find('textarea').remove();
+            textarea.hide();
             content.show();
             editlink.show();
             savelink.hide();
@@ -60,7 +59,7 @@
               url: form.attr('action'),
               data: form.serialize(),
               success: function(data, status, xhr) {
-                content.html(data);
+                content.html(data.html);
                 reset();
               }
             });
@@ -73,13 +72,14 @@
           content.before(cancellink);
           content.before($('<input>', {
             type: 'hidden',
-            name: 'id',
-            value: $this.attr('id')
+            name: 'method',
+            value: 'put'
           }));
+
 
           $this.wrapInner($('<form>', {
             method: 'post',
-            action: settings.saveAction + '?__METHOD_OVERRIDE__=PUT'
+            action: settings.saveAction.replace('_id_', $this.attr('id'))
           }));
 
           $(this).data('editable', {
