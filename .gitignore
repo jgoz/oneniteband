@@ -8,3 +8,4 @@ db/*.db
 Thumbs.db
 distlib
 apps
+_site
