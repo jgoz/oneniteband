@@ -4,7 +4,7 @@ $main-max-width: 1152px;
 
 @mixin buttonize($base_color: #5291C5, $button_size: $font-size-base*2px) {
   @include box-sizing(border-box);
-  @include border-radius($button_size/4);
+  @include border-radius($button_size/8);
   @include linear-gradient(color-stops(lighten($base_color, 30%), lighten($base_color, 15%) 4%, $base_color));
   @include text-shadow(darken($base_color, 10%), 0, -1px, 0);
 
@@ -239,6 +239,7 @@ h1 {
   margin-left: -0.5em;
   margin-right: -0.5em;
   padding-top: 1.5em;
+  position: relative;
 }
 
 .block {
@@ -250,7 +251,7 @@ h1 {
   border-collapse: separate;
   color: #222;
   display: table-cell;
-  padding: 0 0.5em;
+  padding: 0 0.5em 3em;
   width: 30%;
 
   h2 {
@@ -258,7 +259,20 @@ h1 {
     @include text-shadow($onb-blue-light, 1px, 0, 1px);
     letter-spacing: -1px;
   }
+
+  p + p { margin-bottom: 0; }
+
+  .band-img {
+    background: url(/static/images/smallbands.png) 49% 0 no-repeat;
+    bottom: 0;
+    height: 2.6em;
+    position: absolute;
+    width: 30%;
+  }
 }
+
+.jazzband .band-img { background-position: 49% -63px; }
+.rockband .band-img { background-position: 49% -126px; }
 
 #call-to-action {
   margin: 1.5em auto 0;
@@ -274,13 +288,22 @@ h1 {
   .blocks {
     display: block;
     margin: 0;
+    position: static;
   }
   .block, #call-to-action {
     @include box-sizing(border-box);
     display: block;
     width: 100%;
   }
-  .block { margin: 0.5em 0; }
+  .block {
+    margin: 0.5em 0;
+    position: relative;
+
+    .band-img {
+      left: 0;
+      width: 100%;
+    }
+  }
 }
 
 #gigs {
