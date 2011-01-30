@@ -3,7 +3,7 @@
 *.swp
 .sass-cache
 aliases
-static/css
+css
 db/*.db
 Thumbs.db
 distlib
