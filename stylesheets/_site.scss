@@ -62,7 +62,10 @@ header {
     height: 170px;
   }
 
-  #site-title { top: 60px; }
+  #site-title {
+    left: 3px;
+    top: 37px;
+  }
 }
 
 .nav {
@@ -187,6 +190,18 @@ blockquote.intro {
     margin-bottom: 0;
     margin-left: 1em;
     &:before { content: '\2014'; }
+  }
+}
+
+@media screen and (max-device-width: 480px) {
+  h1.intro {
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+  }
+
+  blockquote.intro {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
   }
 }
 
