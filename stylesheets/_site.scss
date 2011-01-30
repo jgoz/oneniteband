@@ -218,7 +218,7 @@ blockquote.intro {
   @include box-shadow(rgba(0,0,0,0.25), 0, 0, 8px);
   @include linear-gradient(color-stops(#fff6d7, #fff1b9));
 
-  background-color: #fff6d7;
+  background-color: #fef2c0;
   border: 1px solid $border-fg;
   border-collapse: separate;
   color: #222;
@@ -236,7 +236,7 @@ blockquote.intro {
 
   .band-img {
     background: url(/images/smallbands.png) 49% 0 no-repeat;
-    bottom: 0;
+    bottom: 1px;
     height: 2.6em;
     position: absolute;
     width: 30%;
@@ -272,6 +272,7 @@ blockquote.intro {
     position: relative;
 
     .band-img {
+      bottom: 0;
       left: 0;
       width: 100%;
     }
