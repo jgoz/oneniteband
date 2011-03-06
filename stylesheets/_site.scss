@@ -193,6 +193,12 @@ blockquote.intro {
   }
 }
 
+p.intro {
+  @include rhythm-pc(112.5%);
+  padding-top: (1.5em / 1.125);
+  margin-bottom: 0;
+}
+
 @media screen and (max-device-width: 480px) {
   h1.intro {
     padding-left: 0.25em;
