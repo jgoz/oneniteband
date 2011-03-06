@@ -11,9 +11,9 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/libs/head.min.js"></script>
 
-  <script src="/js/libs/modernizr-1.6.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body id='{{ page.bodyid }}'>
@@ -38,12 +38,16 @@
   </div>
 
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/js/libs/jquery-1.4.4.min.js"%3E%3C/script%3E'))</script>
+  <script>
+    head.js({ jquery: "//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" });
+  </script>
   
   <!--[if lt IE 7 ]>
-    <script src="/js/libs/dd_belatedpng.js"></script>
-    <script> DD_belatedPNG.fix('img, .png_bg');</script>
+    <script>
+      head.js("/js/libs/dd_belatedpng.js", function() {
+        DD_belatedPNG.fix('img, .png_bg');
+      });
+    </script>
   <![endif]-->
 
   <script>
