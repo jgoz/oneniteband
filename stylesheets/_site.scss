@@ -49,8 +49,9 @@ header {
 
 #site-title {
   margin: 0 auto;
+  padding: 0;
   position: relative;
-  top: 93px;
+  top: 100px;
   width: 187px;
 
   a { text-decoration: none; }
@@ -63,8 +64,8 @@ header {
   }
 
   #site-title {
-    left: 3px;
-    top: 37px;
+    left: 5px;
+    top: 40px;
   }
 }
 
