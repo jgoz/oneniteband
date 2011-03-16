@@ -43,7 +43,7 @@ html {
 }
 
 header {
-  background: url(/images/header_ray.png) no-repeat center top;
+  background: url(/images/header.png) no-repeat center top;
   height: 235px;
 }
 
@@ -58,7 +58,7 @@ header {
 
 @media screen and (max-device-width: 480px) {
   header {
-    background: url(/images/header_ray.png) no-repeat center -40px;
+    background: url(/images/header.png) no-repeat center -40px;
     height: 170px;
   }
 
