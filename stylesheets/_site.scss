@@ -2,25 +2,27 @@
 
 $main-max-width: 1152px;
 
-@mixin buttonize($base_color: #5291C5, $button_size: $font-size-base*2px) {
+@mixin buttonize($base_color: $onb-red, $button_size: $font-size-base*2px) {
   @include box-sizing(border-box);
   @include border-radius($button_size/8);
-  @include linear-gradient(color-stops(lighten($base_color, 30%), lighten($base_color, 15%) 4%, $base_color));
+  @include linear-gradient(color-stops(lighten($base_color, 15%), lighten($base_color, 5%) 4%, $base_color));
   @include text-shadow(darken($base_color, 10%), 0, -1px, 0);
 
   background-color: $base_color;
   border: 1px solid darken($base_color, 20%);
-  color: #fff;
+  color: $onb-almost-white;
   display: inline-block;
   height: $button_size;
   line-height: $button_size - $button_size/$font-size-base;
   padding: 0 $button_size/4;
+  position: relative;
   text-decoration: none;
 
   &:active {
-    @include linear-gradient(color-stops(darken($base_color, 30%), darken($base_color, 15%) 4%, darken($base_color, 7%)));
+    @include linear-gradient(color-stops(darken($base_color, 20%), darken($base_color, 10%) 4%, darken($base_color, 7%)));
+    top: 1px;
   }
-  &:link, &:hover { color: #fff }
+  &:link, &:hover { color: $onb-almost-white; }
 }
 
 html {
@@ -79,9 +81,8 @@ header {
   a:hover, a:active { color: white; }
 
   .contact-us {
-    @include rhythm-pc(105%);
-    a, a:link, a:visited { color: lighten($onb-purple, 50%); }
-    a:hover, a:active { color: lighten($onb-purple, 55%); }
+    a, a:link, a:visited { color: lighten($onb-green, 50%); }
+    a:hover, a:active { color: lighten($onb-green, 55%); }
   }
 }
 
@@ -158,7 +159,7 @@ header {
 }
 
 a.big-action {
-  @include buttonize($onb-purple, $font-size-base*3px);
+  @include buttonize($onb-green, $font-size-base*3px);
   font-size: 1.5em;
   font-weight: bold;
 }
