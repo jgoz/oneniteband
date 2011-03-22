@@ -4,30 +4,31 @@ $font-family-base: 'Century Gothic', 'Apple Gothic', 'URW Gothic L', FuturaStd, 
 $header-font-family: 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
 
 @mixin rhythm-px($size) {
-  font-size: $size*100%/$font-size-base;
+  font-size: $size;
   line-height: $font-size-base*$line-height-base/$size;
 }
 
 @mixin rhythm-pc($percent) {
-  font-size: $percent;
+  font-size: #{$font-size-base*$percent/100%}px;
   @include line-unit-pc(line-height, $percent);
 }
 
 @mixin header-rhythm($percent) {
-  $line-unit-pc: $line-height-base*100%;
-  $top-diff-pc: $line-unit-pc - $percent;
+  $px: $font-size-base*$percent/100%;
+  $line-unit-px: $line-height-base*$font-size-base;
+  $top-diff-px: $line-unit-px - $px;
 
-  font-size: $percent;
+  font-size: #{$px}px;
   line-height: 1;
 
-  @if $percent > 100% {
-    $half-line-unit: ($line-unit-pc/2)/$percent;
-    margin-bottom: #{$half-line-unit}em;
-    padding-top: ($half-line-unit + $top-diff-pc/$percent)*1em;
+  @if $px > $font-size-base {
+    $half-line-px: $line-unit-px/2;
+    margin-bottom: #{$half-line-px}px;
+    padding-top: #{$half-line-px + $top-diff-px}px;
   } @else {
-    $third-line-unit: ($line-unit-pc/4)/$percent;
-    margin-bottom: #{$third-line-unit}em;
-    padding-top: ($top-diff-pc/$percent - $third-line-unit)*1em;
+    $quarter-line-px: $line-unit-px/4;
+    margin-bottom: #{$quarter-line-px}px;
+    padding-top: #{$top-diff-px - $quarter-line-px}px;
   }
 }
 
