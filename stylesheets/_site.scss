@@ -81,8 +81,8 @@ header {
   a:hover, a:active { color: white; }
 
   .contact-us {
-    a, a:link, a:visited { color: lighten($onb-green, 50%); }
-    a:hover, a:active { color: lighten($onb-green, 55%); }
+    a, a:link, a:visited { color: lighten($onb-blue, 50%); }
+    a:hover, a:active { color: lighten($onb-blue, 55%); }
   }
 }
 
@@ -159,7 +159,7 @@ header {
 }
 
 a.big-action {
-  @include buttonize($onb-green, $font-size-base*3px);
+  @include buttonize($onb-blue, $font-size-base*3px);
   font-size: 1.5em;
   font-weight: bold;
 }
