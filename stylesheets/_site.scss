@@ -3,10 +3,18 @@
 $main-max-width: 1152px;
 
 @mixin buttonize($base_color: $onb-red, $button_size: $font-size-base*2px) {
+  $btn-top: lighten($base_color, 25%);
+  $btn-stop: lighten($base_color, 15%);
+  $btn-bottom: $base_color;
+  $btn-top-a: darken($base_color, 20%);
+  $btn-stop-a: darken($base_color, 15%);
+  $btn-bottom-a: darken($base_color, 7%);
+  $shadow: darken($base_color, 10%);
+
   @include box-sizing(border-box);
   @include border-radius($button_size/8);
-  @include linear-gradient(color-stops(lighten($base_color, 25%), lighten($base_color, 15%) 4%, $base_color));
-  @include text-shadow(darken($base_color, 10%), 0, -1px, 0);
+  @include linear-gradient(color-stops($btn-top, $btn-stop 4%, $btn-bottom));
+  @include text-shadow($shadow, 0, -1px, 0);
 
   background-color: $base_color;
   border: 1px solid darken($base_color, 20%);
@@ -19,7 +27,7 @@ $main-max-width: 1152px;
   text-decoration: none;
 
   &:active {
-    @include linear-gradient(color-stops(darken($base_color, 20%), darken($base_color, 10%) 4%, darken($base_color, 7%)));
+    @include linear-gradient(color-stops($btn-top-a, $btn-stop-a 4%, $btn-bottom-a));
     top: 1px;
   }
   &:link, &:hover { color: $onb-almost-white; }
@@ -36,7 +44,7 @@ html {
   padding-right: 2em;
 }
 
-@media screen and (max-device-width: 480px) {
+.lt-640 {
   .nav, #main, #footer {
     margin: 0;
     padding-left: 0.5em;
@@ -114,7 +122,7 @@ header {
 }
 #motto { font-size: 87.5%; }
 
-@media screen and (max-width: 600px) {
+.lt-640 {
   #nav {
     display: block;
     padding: 0;
@@ -154,7 +162,7 @@ header {
   p { margin-bottom: 0.5em; }
 }
 
-@media screen and (max-device-width: 480px) {
+.lt-640 {
   #footer { text-align: center; }
 }
 
@@ -201,7 +209,7 @@ p.intro {
   margin-bottom: 0;
 }
 
-@media screen and (max-device-width: 480px) {
+.lt-640 {
   h1.intro {
     padding-left: 0.25em;
     padding-right: 0.25em;
@@ -264,7 +272,7 @@ p.intro {
   .big-action { vertical-align: middle; }
 }
 
-@media screen and (max-width: 640px) {
+.lt-640 {
   .blocks {
     display: block;
     margin: 0;
