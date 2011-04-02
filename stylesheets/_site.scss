@@ -188,7 +188,7 @@ h1.intro, .intro h1 {
 
 h1.intro, blockquote.intro {
   color: $onb-almost-white;
-  background: $onb-blue-very-dark;
+  background: $onb-black;
   margin: 0 auto;
   max-width: $main-max-width;
 }
@@ -232,7 +232,7 @@ p.intro {
 
 .block {
   @include box-shadow(rgba(0,0,0,0.25), 0, 0, 8px);
-  @include linear-gradient(color-stops(#fff6d7, #fff1b9));
+  @include linear-gradient(color-stops($block-bg-top, $block-bg-bottom));
 
   background-color: #fef2c0;
   border: 1px solid $border-fg;

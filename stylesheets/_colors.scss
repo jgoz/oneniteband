@@ -1,6 +1,7 @@
 $onb-blue: #0d43af;
 $onb-blue-very-dark: #004;
 $onb-blue-light: #5e93fb;
+$onb-black: #171717;
 $onb-orange: #d66a00;
 $onb-purple: #712da1;
 $onb-almost-white: #fdfaf1;
@@ -14,8 +15,10 @@ $link-hover-fg: lighten($link-fg, 30%);
 
 $container-bg: #e1b738;
 $main-bg: $onb-almost-white;
-$nav-bg: $onb-blue-very-dark;
+$nav-bg: $onb-black;
 $border-fg: $onb-red;
+$block-bg-top: lighten($container-bg, 40%);
+$block-bg-bottom: lighten($container-bg, 30%);
 
 $highlight-fg: #000;
 $highlight-bg: #dbf94a;
