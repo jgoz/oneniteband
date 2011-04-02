@@ -203,6 +203,11 @@ blockquote.intro {
   }
 }
 
+h2 {
+  color: $onb-black;
+  letter-spacing: -1px;
+}
+
 p.intro {
   @include rhythm-pc(112.5%);
   padding-top: (1.5em / 1.125);
@@ -243,9 +248,7 @@ p.intro {
   width: 30%;
 
   h2 {
-    color: $onb-blue-very-dark;
     @include text-shadow($onb-blue-light, 1px, 0, 1px);
-    letter-spacing: -1px;
   }
 
   p + p { margin-bottom: 0; }
@@ -314,7 +317,7 @@ p.intro {
   #gigs { height: auto; }
 }
 
-.bio p {
-  max-width: 40em;
+#bio p {
+  max-width: 35em;
 }
 
