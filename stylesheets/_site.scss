@@ -1,6 +1,6 @@
 @import "compass/css3";
 
-$main-max-width: 1152px;
+$main-max-width: 1200px;
 
 @mixin buttonize($base_color: $onb-red, $button_size: $font-size-base*2px) {
   $btn-top: lighten($base_color, 25%);
@@ -13,12 +13,11 @@ $main-max-width: 1152px;
 
   @include box-sizing(border-box);
   @include border-radius($button_size/8);
-  @include linear-gradient(color-stops($btn-top, $btn-stop 4%, $btn-bottom));
   @include text-shadow($shadow, 0, -1px, 0);
 
   background-color: $base_color;
   border: 1px solid darken($base_color, 20%);
-  color: $onb-almost-white;
+  color: $onb-very-white;
   display: inline-block;
   height: $button_size;
   line-height: $button_size - $button_size/$font-size-base;
@@ -27,7 +26,7 @@ $main-max-width: 1152px;
   text-decoration: none;
 
   &:active {
-    @include linear-gradient(color-stops($btn-top-a, $btn-stop-a 4%, $btn-bottom-a));
+    background: $btn-bottom-a;
     top: 1px;
   }
   &:link, &:hover { color: $onb-almost-white; }
@@ -37,7 +36,9 @@ html {
   background: $container-bg;
 }
 
-.nav, #main, #footer {
+.nav, #main, #footer, div.intro, blockquote.intro {
+  @include box-sizing(border-box);
+
   margin: 0px auto;
   max-width: $main-max-width;
   padding-left: 2em;
@@ -152,10 +153,16 @@ header {
   position: relative;
 }
 
+.w-1300, .w-1400, .w-1500, .w-1600, .w-1700, .w-1800, .w-1900 {
+  #main {
+    border-left: 1px solid $banner-bg;
+    border-right: 1px solid $banner-bg;
+  }
+}
+
 #index #main { padding-top: 0; }
 
 #footer {
-  color: $onb-almost-white;
   font-size: 82.5%;
   padding-top: 1.5em;
   padding-bottom: 1.5em;
@@ -174,15 +181,12 @@ a.big-action {
 }
 
 div.intro, blockquote.intro {
-  color: $onb-almost-white;
+  color: $onb-very-white;
   background: $banner-bg;
-  margin: 0 auto;
-  max-width: $main-max-width;
 
   h1 {
     @include text-shadow(rgba(0,0,0,0.25), 0, -1px, 0);
 
-    color: $onb-almost-white;
     letter-spacing: -2px;
   }
 }
@@ -190,11 +194,12 @@ div.intro, blockquote.intro {
 #index .intro h1 {
   @include header-rhythm(200%);
   margin: 0;
-  padding: 0.75em 1em;
+  padding: 0.75em 0;
 }
 
 #bio blockquote.intro {
-  padding: 0.75em 2em;
+  padding-bottom: 0.75em;
+  padding-top: 0.75em;
   h1 { @include header-rhythm(175%); }
   p.attrib {
     margin-bottom: 0;
@@ -215,7 +220,7 @@ p.intro {
 }
 
 .lt-640 {
-  #index .intro h1 {
+  #index div.intro {
     padding-left: 0.25em;
     padding-right: 0.25em;
   }
@@ -237,9 +242,8 @@ p.intro {
 
 .block {
   @include box-shadow(rgba(0,0,0,0.25), 0, 0, 8px);
-  @include linear-gradient(color-stops($block-bg-top, $block-bg-bottom));
 
-  background-color: #fef2c0;
+  background-color: $block-bg;
   border: 1px solid $border-fg;
   border-collapse: separate;
   color: #222;
