@@ -89,8 +89,8 @@ header {
   a:hover, a:active { color: white; }
 
   .contact-us {
-    a, a:link, a:visited { color: lighten($onb-blue, 50%); }
-    a:hover, a:active { color: lighten($onb-blue, 55%); }
+    a, a:link, a:visited { color: lighten($onb-blue, 55%); }
+    a:hover, a:active { color: lighten($onb-blue, 60%); }
   }
 }
 
