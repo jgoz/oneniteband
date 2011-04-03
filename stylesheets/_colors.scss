@@ -15,10 +15,10 @@ $link-hover-fg: lighten($link-fg, 30%);
 
 $container-bg: #e1b738;
 $main-bg: $onb-almost-white;
-$nav-bg: $onb-black;
 $border-fg: $onb-red;
 $block-bg-top: lighten($container-bg, 40%);
 $block-bg-bottom: lighten($container-bg, 30%);
+$banner-bg: darken($onb-red, 9%);
 
 $highlight-fg: #000;
 $highlight-bg: #dbf94a;
