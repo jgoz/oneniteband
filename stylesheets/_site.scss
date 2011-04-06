@@ -45,7 +45,7 @@ html {
   padding-right: 2em;
 }
 
-.lt-640 {
+@media screen and (max-device-width: 480px) {
   .nav, #main, #footer {
     margin: 0;
     padding-left: 0.5em;
@@ -153,7 +153,7 @@ html {
   position: relative;
 }
 
-.w-1300, .w-1400, .w-1500, .w-1600, .w-1700, .w-1800, .w-1900 {
+.gt-1220 {
   #main {
     border-left: 1px solid $banner-bg;
     border-right: 1px solid $banner-bg;
@@ -219,7 +219,7 @@ p.intro {
   margin-bottom: 0;
 }
 
-.lt-640 {
+@media screen and (max-device-width: 480px) {
   #index div.intro {
     padding-left: 0.25em;
     padding-right: 0.25em;

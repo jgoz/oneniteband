@@ -9,7 +9,7 @@
 (function(doc) {
 
   var html = doc.documentElement,
-      conf = { screens: [320, 480, 640, 768, 1024, 1280, 1440, 1680, 1920] },
+      conf = { screens: [320, 480, 640, 768, 1024, 1220] },
       klass = [];
 
   function each(arr, fn) {  
