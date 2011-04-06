@@ -11,17 +11,17 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script src="/js/libs/head.min.js"></script>
+  <script src="/js/libs/headmod.min.js"></script>
 
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body id='{{ page.bodyid }}'>
-  <header>
+  <div id='header'>
     <h1 id='site-title'>
       <a href="/"><img src="/images/logo.png" alt='One Nite Band' /></a>
     </h1>
-  </header>
+  </div>
 
   {{ content }}
 
@@ -37,22 +37,25 @@
     <p id='copyright'>Copyright &copy; 2005&mdash;{{ 'now' | date: "%Y" }} One Nite Band dot com.</p>
   </div>
 
-
   <script>
-    head.js({ jquery: "//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" });
+    yepnope("//ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js");
   </script>
   
   <!--[if lt IE 7 ]>
     <script>
-      head.js("/js/libs/dd_belatedpng.js", function() {
-        DD_belatedPNG.fix('img, .png_bg');
+      yepnope({
+        load: "ielt7!/js/libs/dd_belatedpng.js",
+
+        callback: function() {
+          DD_belatedPNG.fix('img, #header, .band-img');
+        }
       });
     </script>
   <![endif]-->
 
   <script>
-   var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
-   head.js('//www.google-analytics.com/ga.js');
+    var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+    yepnope('//www.google-analytics.com/ga.js');
   </script>
 </body>
 </html>
