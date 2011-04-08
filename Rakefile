@@ -1,4 +1,4 @@
-task :default => [ :stylesheets ]
+task :default => [ :stylesheets, :modjs ]
 
 desc 'Regenerates all sass templates.'
 task :stylesheets do
@@ -13,5 +13,5 @@ end
 
 desc 'Minify modified head.js and append to modernizr. Muahahahaaaaa.'
 task :modjs do
-  system "curl --data-urlencode js_code@js/head.mod.js http://marijnhaverbeke.nl/uglifyjs | cat js/libs/modernizr.min.js - > js/libs/headmod.min.js"
+  system "curl --data-urlencode js_code@js/head.mod.js http://marijnhaverbeke.nl/uglifyjs | cat - js/libs/modernizr.min.js > js/head.mod.min.js"
 end
