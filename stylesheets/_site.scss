@@ -325,6 +325,58 @@ p.intro {
   max-width: 35em;
 }
 
+.photo-pane {
+  max-width: 640px;
+
+  a, img { display: inline-block; }
+  
+  a { background: $onb-black; }
+
+  img { @include opacity(0.75); }
+  a:hover { img { @include opacity(1); } }
+
+  img {
+    @include box-shadow(rgba(0,0,0,0.5), 0, 0, 4px);
+
+    background-color: $block-bg;
+  }
+}
+
+.gt-985 {
+  #main { position: relative; }
+
+  .photo-pane {
+    left: 40em;
+    min-width: 310px;
+    position: absolute;
+    top: 3em;
+  }
+}
+
+.lt-985 {
+  .photo-pane {
+    a {
+      max-width: 150px;
+      width: 23%;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-device-width: 480px) {
+  .lt-985 {
+    .photo-pane {
+      text-align: center;
+
+      a { width: 24%; }
+      img { @include opacity(1); }
+    }
+  }
+}
+
 .lt-640 #bio #second-call-to-action {
   text-align: center;
 }
