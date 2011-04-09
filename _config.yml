@@ -1,2 +1,5 @@
 title: One Nite Band
-photo-root: //photos.oneniteband.com.s3.amazonaws.com
+photo-root-a: //photos1.oneniteband.com
+photo-root-b: //photos2.oneniteband.com
+photo-root-c: //photos3.oneniteband.com
+photo-root-d: //photos4.oneniteband.com
