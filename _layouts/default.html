@@ -11,7 +11,10 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script src="/js/head.mod.min.js"></script>
+  <script>
+    var head_conf = { screens: [480, 640, 985, 1024, 1220, 1280] };
+  </script>
+  <script src="/js/libs/head.min.js"></script>
 
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -37,27 +40,17 @@
     <p id='copyright'>Copyright &copy; 2005&mdash;{{ 'now' | date: "%Y" }} One Nite Band dot com.</p>
   </div>
 
-  {% if page.load_jquery %}
-  <script>
-    yepnope("//ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js");
-  </script>
-  {% endif %}
-  
   <!--[if lt IE 7 ]>
     <script>
-      yepnope({
-        load: "ielt7!/js/libs/dd_belatedpng.js",
-
-        callback: function() {
-          DD_belatedPNG.fix('img, #header, .band-img');
-        }
+      head.js("/js/libs/dd_belatedpng.js", function() {
+        DD_belatedPNG.fix('img, #header, .band-img');
       });
     </script>
   <![endif]-->
 
   <script>
     var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
-    yepnope('//www.google-analytics.com/ga.js');
+    head.js('//www.google-analytics.com/ga.js');
   </script>
 </body>
 </html>
