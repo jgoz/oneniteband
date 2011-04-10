@@ -118,26 +118,7 @@ html {
   }
 }
 
-#band-name {
-  font-weight: bold;
-  a { text-decoration: none; }
-}
-#motto { font-size: 87.5%; }
-
 .lt-640 {
-  #nav {
-    display: block;
-    padding: 0;
-
-    #band-name, ul { display: none; }
-    #motto {
-      display: block;
-      line-height: (2 / 0.875);
-      text-align: center;
-      width: 100%;
-    }
-  }
-
   #nav-bottom {
     display: block;
     padding: 0;
