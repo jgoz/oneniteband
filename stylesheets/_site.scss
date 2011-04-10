@@ -302,25 +302,6 @@ p.intro {
   }
 }
 
-#gigs {
-  background-color: $banner-bg;
-  color: $onb-almost-white;
-  height: 1.5em;
-  margin-top: 1.5em;
-  overflow: hidden;
-  padding: 0 0.5em;
-
-  .upcoming { font-weight: bold; }
-  .upcoming:after { content: ' \203A'; font-weight: bold; } // &rsaquo;
-
-  .gig:after { content: ' \2022 '; } // &bull;
-  .gig:last-child:after { content: ''; }
-}
-
-@media screen and (max-width: 480px) {
-  #gigs { height: auto; }
-}
-
 #bio p {
   max-width: 35em;
 }
