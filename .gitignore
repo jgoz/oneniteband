@@ -9,4 +9,4 @@ Thumbs.db
 distlib
 apps
 _site
-js/head.mod.min.js
+js/*.min.js

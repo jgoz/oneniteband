@@ -330,9 +330,7 @@ p.intro {
 
   a, img { display: inline-block; }
   
-  a { background: $onb-black; }
-
-  img { @include opacity(0.75); }
+  img { @include opacity(0.85); }
   a:hover { img { @include opacity(1); } }
 
   img {
@@ -379,4 +377,50 @@ p.intro {
 
 .lt-640 #bio #second-call-to-action {
   text-align: center;
+}
+
+#overlay {
+  background: url(/images/overlay-fdfaf1-60.png) repeat;
+  display: none;
+  left: 0;
+  height: 3000px;
+  padding-top: 15%;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+#photo-viewer {
+  @include box-shadow(rgba(0,0,0,0.5), 0, 0, 10px);
+
+  background: $onb-very-white;
+  border: 1px solid $border-fg;
+  display: inline-block;
+  padding: 0 1em;
+  position: relative;
+  z-index: 101;
+
+  h3 {
+    letter-spacing: -1px;
+    text-align: center;
+  }
+
+  a, img { cursor: pointer; }
+
+  img {
+    display: block;
+    max-width: 100%;
+    max-height: 600px;
+  }
+
+  .next { float: right; }
+  .prev { float: left; }
+}
+
+@media screen and (max-device-width: 480px) {
+  #photo-viewer img {
+    max-height: 300px;
+  }
 }

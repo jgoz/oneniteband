@@ -1,4 +1,4 @@
-task :default => [ :stylesheets, :modjs ]
+task :default => [ :stylesheets, :minjs ]
 
 desc 'Regenerates all sass templates.'
 task :stylesheets do
@@ -11,7 +11,7 @@ task :png do
   system "find images/ -name '*-nq8.png' -print0 | xargs -P1 -0 -n1 pngout"
 end
 
-desc 'Minify modified head.js and append to modernizr. Muahahahaaaaa.'
-task :modjs do
-  system "curl --data-urlencode js_code@js/head.mod.js http://marijnhaverbeke.nl/uglifyjs | cat - js/libs/modernizr.min.js > js/head.mod.min.js"
+desc 'Minify javascript using web-based uglifyjs.'
+task :minjs do
+  system "curl --data-urlencode js_code@js/photo.js http://marijnhaverbeke.nl/uglifyjs > js/photo.min.js"
 end
