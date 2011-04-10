@@ -97,6 +97,7 @@ html {
 
 #index .nav .home { display: none; }
 #bio .nav .bio { display: none; }
+#contact .nav .contact { display: none; }
 
 #nav-bottom {
   margin-top: 0;
@@ -172,10 +173,12 @@ div.intro, blockquote.intro {
   }
 }
 
-#index .intro h1 {
-  @include header-rhythm(200%);
-  margin: 0;
-  padding: 0.75em 0;
+#index, #contact {
+  .intro h1 {
+    @include header-rhythm(200%);
+    margin: 0;
+    padding: 0.75em 0;
+  }
 }
 
 #bio blockquote.intro {
@@ -201,7 +204,7 @@ p.intro {
 }
 
 @media screen and (max-device-width: 480px) {
-  #index div.intro {
+  div.intro {
     padding-left: 0.25em;
     padding-right: 0.25em;
   }
@@ -283,9 +286,7 @@ p.intro {
   }
 }
 
-#bio p {
-  max-width: 35em;
-}
+#bio p { max-width: 35em; }
 
 .photo-pane {
   max-width: 640px;
@@ -309,7 +310,7 @@ p.intro {
     left: 40em;
     min-width: 310px;
     position: absolute;
-    top: 3em;
+    top: 36px;
   }
 }
 
@@ -385,4 +386,49 @@ p.intro {
   #photo-viewer img {
     max-height: 300px;
   }
+}
+
+#contact {
+  .label {
+    display: inline-block;
+    width: 3em;
+  }
+
+  .rob {
+    @include box-shadow(rgba(0,0,0,0.5), 0, 0, 10px);
+
+    border: 1px solid $border-fg;
+    position: absolute;
+    top: 36px;
+    width: 250px;
+  }
+
+  p { max-width: 35em; }
+  p.contact-info { white-space: nowrap; }
+
+  h2, p {
+    margin-left: 274px;
+  }
+
+  #main {
+    min-height: 450px;
+    position: relative;
+  }
+}
+
+.lt-640 #contact {
+  .rob { max-width: 39%; }
+  h2, p { margin-left: 48%; }
+}
+
+.lt-480 #contact {
+  .rob {
+    position: static;
+    top: 0;
+    max-width: 100%;
+  }
+
+  h2, p { margin-left: 0; }
+
+  #main { position: static; }
 }
