@@ -1,3 +1,7 @@
+# Jekyll Configuration
+exclude: ["stylesheets", "photo.js", "Rakefile", "README"]
+
+# Site configuration
 title: One Nite Band
 photo-root-a: //photos1.oneniteband.com
 photo-root-b: //photos2.oneniteband.com
