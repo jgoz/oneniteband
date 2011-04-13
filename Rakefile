@@ -1,3 +1,9 @@
+def get_version(path)
+  require "yaml"
+
+  YAML::load_file("_versions.yml")[path] or 1
+end
+
 task :default => [ :css, :minjs ]
 
 desc 'Regenerates all sass templates.'
@@ -7,7 +13,15 @@ end
 
 desc 'Minify javascript using web-based uglifyjs.'
 task :minjs do
-  system "curl --data-urlencode js_code@js/photo.js http://marijnhaverbeke.nl/uglifyjs > js/photo.min.js"
+  min_dir = File.join('js', 'min')
+  unless File.exists? min_dir then Dir.mkdir(min_dir) end
+
+  Dir.glob(File.join('js', '*.js')) do |path|
+    file = File.basename(path, ".js") + "." + get_version(path).to_s + ".js"
+    out_path = File.join(min_dir, file)
+
+    system "curl --data-urlencode js_code@#{path} http://marijnhaverbeke.nl/uglifyjs > #{out_path}"
+  end
 end
 
 desc 'Quantize and compress png images.'
