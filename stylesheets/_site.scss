@@ -286,7 +286,7 @@ p.intro {
   }
 }
 
-#bio p { max-width: 35em; }
+#bio #main p { max-width: 35em; }
 
 .photo-pane {
   max-width: 640px;
@@ -389,39 +389,41 @@ p.intro {
 }
 
 #contact {
-  .label {
-    display: inline-block;
-    width: 3em;
-  }
-
-  .rob {
-    @include box-shadow(rgba(0,0,0,0.5), 0, 0, 10px);
-
-    border: 1px solid $border-fg;
-    position: absolute;
-    top: 36px;
-    width: 250px;
-  }
-
-  p { max-width: 35em; }
-  p.contact-info { white-space: nowrap; }
-
-  h2, p {
-    margin-left: 274px;
-  }
-
   #main {
+    .label {
+      display: inline-block;
+      width: 3em;
+    }
+
+    .rob {
+      @include box-shadow(rgba(0,0,0,0.5), 0, 0, 10px);
+
+      border: 1px solid $border-fg;
+      position: absolute;
+      top: 36px;
+      width: 250px;
+    }
+
+    p { max-width: 35em; }
+    p.contact-info { white-space: nowrap; }
+
+    h2, p {
+      margin-left: 274px;
+    }
+
     min-height: 450px;
     position: relative;
   }
 }
 
-.lt-640 #contact {
-  .rob { max-width: 39%; }
-  h2, p { margin-left: 48%; }
+.lt-640 #contact #main {
+  .rob { max-width: 250 / (640 - 17)  * 100%; }
+  h2, p { margin-left: 274 / (640 - 64 - 17) * 100%; }
 }
 
-.lt-480 #contact {
+.lt-480 #contact #main {
+   position: static; 
+
   .rob {
     position: static;
     top: 0;
@@ -429,6 +431,4 @@ p.intro {
   }
 
   h2, p { margin-left: 0; }
-
-  #main { position: static; }
 }
