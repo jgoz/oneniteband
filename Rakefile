@@ -8,7 +8,7 @@ task :default => [ :css, :minjs ]
 
 desc 'Regenerates all sass templates.'
 task :css do
-  system "compass compile --sass-dir stylesheets --css-dir css"
+  system "compass compile --sass-dir stylesheets --css-dir css --output-style compressed"
 end
 
 desc 'Minify javascript using web-based uglifyjs.'
