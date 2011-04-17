@@ -1,5 +1,5 @@
 # Jekyll Configuration
-exclude: ["photo.js", "Rakefile", "README"]
+exclude: ["photo.js", "style.css", "Rakefile", "README"]
 
 # Site configuration
 title: One Nite Band
