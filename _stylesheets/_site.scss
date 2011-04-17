@@ -438,9 +438,7 @@ p.intro {
 .lt-ie8 {
   #nav-bottom {
     ul { overflow: hidden; }
-    li {
-      float: left;
-    }
+    li { float: left; }
   }
 
   .blocks {
@@ -456,15 +454,11 @@ p.intro {
     position: relative;
     width: 29%;
 
-    .band-img {
-      width: 100%;
-    }
+    .band-img { width: 100%; }
   }
 
-  .w-700, .gt-640.w-600 {
-    .block {
-      height: 220px;
-    }
+  &.w-700, &.gt-640.w-600 {
+    .block { height: 220px; }
   }
 
   .lt-640 {
@@ -475,17 +469,18 @@ p.intro {
     }
   }
 
-  .gt-985 {
-    .photo-pane {
-      width: 310px;
-    }
-  }
+  &.gt-985 .photo-pane { width: 310px; }
 
   #photo-viewer {
     width: 75%;
 
-    img {
-      margin-bottom: 0.5em;
-    }
+    img { margin-bottom: 0.5em; }
   }
+}
+
+/* Compatibility for the shittiest browser */
+
+.lt-ie7 {
+  #bio p { width: expression(document.body.clientWidth > 560 ? "35em" : "auto"); }
+  .photo-pane { width: expression(document.body.clientWidth > 985 ? "310px" : "640px"); }
 }
