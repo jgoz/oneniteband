@@ -347,7 +347,7 @@ p.intro {
   display: none;
   left: 0;
   height: 3000px;
-  padding-top: 15%;
+  padding-top: 2%;
   position: fixed;
   text-align: center;
   top: 0;
@@ -375,7 +375,7 @@ p.intro {
   img {
     display: block;
     max-width: 100%;
-    max-height: 600px;
+    max-height: 500px;
   }
 
   .next { float: right; }
@@ -404,7 +404,7 @@ p.intro {
       width: 250px;
     }
 
-    p { max-width: 35em; }
+    p { max-width: 30em; }
     p.contact-info { white-space: nowrap; }
 
     h2, p {

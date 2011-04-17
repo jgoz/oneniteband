@@ -1,4 +1,4 @@
-(function($) {
+(function($, window, document) {
   var _selectors = {
     o: "#overlay",
     v: "#photo-viewer",
@@ -22,9 +22,11 @@
   }
 
   function loadPhoto($link) {
-    var $viewer = $(_selectors.v);
+    var $viewer = $(_selectors.v),
+        viewHeight = window.innerHeight || document.documentElement.clientHeight;
 
     $("h3", $viewer).html($("img", $link).attr("alt"));
+    $("img", $viewer).css("max-height", viewHeight - 100);
     $("img", $viewer).attr("src", $link.attr("href"));
     $viewer.data("link", $link);
 
@@ -76,4 +78,4 @@
   $(function() {
     init($(".photo-pane"));
   });
-})(jQuery);
+})(jQuery, window, document);
