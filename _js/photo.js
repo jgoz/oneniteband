@@ -26,7 +26,7 @@
         viewHeight = window.innerHeight || document.documentElement.clientHeight;
 
     $("h3", $viewer).html($("img", $link).attr("alt"));
-    $("img", $viewer).css("max-height", viewHeight - 100);
+    $("img", $viewer).css("max-height", viewHeight - 110);
     $("img", $viewer).attr("src", $link.attr("href"));
     $viewer.data("link", $link);
 

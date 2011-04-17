@@ -432,3 +432,60 @@ p.intro {
 
   h2, p { margin-left: 0; }
 }
+
+/* Compatibility for shitty browsers */
+
+.lt-ie8 {
+  #nav-bottom {
+    ul { overflow: hidden; }
+    li {
+      float: left;
+    }
+  }
+
+  .blocks {
+    overflow: hidden;
+    position: static;
+  }
+
+  .block {
+    display: block;
+    float: left;
+    height: 180px;
+    margin-right: 1%;
+    position: relative;
+    width: 29%;
+
+    .band-img {
+      width: 100%;
+    }
+  }
+
+  .w-700, .gt-640.w-600 {
+    .block {
+      height: 220px;
+    }
+  }
+
+  .lt-640 {
+    .block {
+      height: auto;
+      margin-right: 0;
+      width: 96%;
+    }
+  }
+
+  .gt-985 {
+    .photo-pane {
+      width: 310px;
+    }
+  }
+
+  #photo-viewer {
+    width: 75%;
+
+    img {
+      margin-bottom: 0.5em;
+    }
+  }
+}
