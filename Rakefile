@@ -35,7 +35,7 @@ end
 def get_versions(on)
   require "yaml"
 
-  YAML::load_file("_versions.yml").delete_if{|file, opts| opts['gen'] != on}
+  YAML::load_file("_versions.yml").delete_if{|file, opts| opts['gen'] and opts['gen'] != on}
 end
 
 def get_version(on, path)
