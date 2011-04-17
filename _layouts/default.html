@@ -14,9 +14,9 @@
   <script>
     var head_conf = { screens: [480, 640, 985, 1024, 1220, 1280] };
   </script>
-  <script src="/js/libs/head.min.js"></script>
+  <script src="/js/libs/{% versioned js/libs/head.min.js %}"></script>
 
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/{% versioned css/style.css %}">
 </head>
 
 <body id='{{ page.bodyid }}'>
@@ -42,7 +42,7 @@
 
   <!--[if lt IE 7 ]>
     <script>
-      head.js("/js/libs/dd_belatedpng.js", function() {
+      head.js("/js/libs/{% versioned js/libs/dd_belatedpng.js %}", function() {
         DD_belatedPNG.fix('img, #header, .band-img');
       });
     </script>

@@ -12,7 +12,7 @@ module Jekyll
     end
 
     def render(context)
-      version = @versions[@path] or 1
+      version = @versions[@path]['ver'] or 1
       ext = File.extname(@path)
 
       File.basename(@path, ext) + "." + version.to_s + ext

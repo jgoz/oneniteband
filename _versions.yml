@@ -1,2 +1,10 @@
-js/photo.js: 1
-css/style.css: 1
+js/photo.js:
+  ver: 1
+  gen: min
+
+css/style.css:
+  ver: 1
+js/libs/head.min.js:
+  ver: 1
+js/libs/dd_belatedpng.js:
+  ver: 1
