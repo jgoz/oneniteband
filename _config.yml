@@ -1,5 +1,5 @@
 # Jekyll Configuration
-exclude: ["photo.js", "style.css", "Rakefile", "README"]
+exclude: ["Rakefile", "README", "Thumbs.db"]
 
 # Site configuration
 title: One Nite Band

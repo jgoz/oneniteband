@@ -8,3 +8,9 @@ js/libs/head.min.js:
   ver: 1
 js/libs/dd_belatedpng.js:
   ver: 1
+
+images/header.png: { ver: 1 }
+images/logo.png: { ver: 1 }
+images/overlay-fdfaf1-60.png: { ver: 1 }
+images/smallbands.png: { ver: 1 }
+images/smallstar.png: { ver: 1 }

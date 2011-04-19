@@ -4,7 +4,6 @@
 .sass-cache
 aliases
 css
-js
 db/*.db
 Thumbs.db
 distlib

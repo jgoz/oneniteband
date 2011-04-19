@@ -54,7 +54,7 @@ html {
 }
 
 #header {
-  background: url(/images/header.png) no-repeat center top;
+  background: url(/images/header.1.png) no-repeat center top;
   height: 235px;
 }
 
@@ -70,7 +70,7 @@ html {
 
 @media screen and (max-device-width: 480px) {
   #header {
-    background: url(/images/header.png) no-repeat center -40px;
+    background: url(/images/header.1.png) no-repeat center -40px;
     height: 170px;
   }
 
@@ -242,7 +242,7 @@ p.intro {
   p + p { margin-bottom: 0; }
 
   .band-img {
-    background: url(/images/smallbands.png) 49% 0 no-repeat;
+    background: url(/images/smallbands.1.png) 49% 0 no-repeat;
     bottom: 1px;
     height: 42px;
     position: absolute;
@@ -343,7 +343,7 @@ p.intro {
 }
 
 #overlay {
-  background: url(/images/overlay-fdfaf1-60.png) repeat;
+  background: url(/images/overlay-fdfaf1-60.1.png) repeat;
   display: none;
   left: 0;
   height: 3000px;
