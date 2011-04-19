@@ -30,6 +30,7 @@ task :deploy => [:css, :minjs] do
   require 'aws/s3'
   
   BUCKET = 'oneniteband.com'
+  NOGZIP_EXTS = ['.gif', '.jpg', '.jpeg', '.png', '.ico', '.woff']
 
   AWS::S3::Base.establish_connection!(
     :access_key_id => ENV['AMAZON_ACCESS_KEY_ID'],
@@ -45,14 +46,20 @@ task :deploy => [:css, :minjs] do
     next if File.directory? File.expand_path(path)
 
     maxage = versioned_files.include?(path) ? 315360000 : 259200
+    compress = !NOGZIP_EXTS.include?(File.extname(path))
 
-    puts "%s -> %d" % [path, maxage]
+    puts "%s -> %d%s" % [path, maxage, (compress ? ' gzip' : '')]
 
-    AWS::S3::S3Object.store(
-      path, File.open(path), BUCKET,
+    file = compress ? get_compressed(path) : File.open(path)
+
+    headers = {
       :access => :public_read,
       'Cache-Control' => "max-age=#{maxage}"
-    )
+    }
+
+    headers.merge!('Content-Encoding' => 'gzip') if compress
+
+    AWS::S3::S3Object.store(path, file, BUCKET, headers)
 
     deployed << path
   end
@@ -65,6 +72,18 @@ task :deploy => [:css, :minjs] do
     puts "x %s" % key
     AWS::S3::S3Object.delete(key, BUCKET)
   end
+end
+
+def get_compressed(path)
+  require 'stringio'
+  require 'zlib'
+
+  strio = StringIO.open('', 'w')
+  gz = Zlib::GzipWriter.new(strio)
+  gz.write(File.open(path).read)
+  gz.close
+
+  strio
 end
 
 def get_version(on, path)
