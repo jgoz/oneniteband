@@ -11,6 +11,8 @@ task :minjs do
   unless File.exists? min_dir then Dir.mkdir(min_dir) end
 
   Dir.glob(File.join('js', '*.js')) do |path|
+    next if path =~ /\w+\.\d+\.js/
+
     key = path
     file = File.basename(path, ".js") + "." + get_version('min', key).to_s + ".js"
     out_path = File.join(min_dir, file)
