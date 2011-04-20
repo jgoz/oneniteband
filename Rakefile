@@ -85,12 +85,12 @@ def get_compressed(path)
   require 'stringio'
   require 'zlib'
 
-  strio = StringIO.open('', 'w')
+  strio = StringIO.open('', 'r+')
   gz = Zlib::GzipWriter.new(strio)
   gz.write(File.open(path).read)
   gz.close
 
-  strio
+  strio.string
 end
 
 def get_version(on, path)
