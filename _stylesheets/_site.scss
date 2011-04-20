@@ -392,7 +392,7 @@ p.intro {
   #main {
     .label {
       display: inline-block;
-      width: 3em;
+      width: 3.75em;
     }
 
     .rob {
@@ -422,7 +422,7 @@ p.intro {
 }
 
 .lt-480 #contact #main {
-   position: static; 
+  position: static; 
 
   .rob {
     position: static;
@@ -431,6 +431,10 @@ p.intro {
   }
 
   h2, p { margin-left: 0; }
+}
+
+@media screen and (max-device-width: 480px) {
+  #contact #main .label { width: 3em; }
 }
 
 /* Compatibility for shitty browsers */
