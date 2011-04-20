@@ -40,7 +40,11 @@ task :deploy => [:css, :minjs] do
     :use_ssl => true
   )
 
-  versioned_files = get_all_versions().keys
+  versioned_files = get_all_versions().to_a.map do |el|
+    dir = File.dirname(el[0])
+    ext = File.extname(el[0])
+    File.join(dir, "#{File.basename(el[0], ext)}.#{el[1]['ver']}#{ext}")
+  end
   deployed = []
 
   oldwd = Dir.getwd
