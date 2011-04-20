@@ -173,7 +173,7 @@ div.intro, blockquote.intro {
   }
 }
 
-#index, #contact {
+#index, #contact, #error {
   .intro h1 {
     @include header-rhythm(200%);
     margin: 0;
