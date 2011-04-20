@@ -36,7 +36,8 @@ task :deploy => [:css, :minjs] do
 
   AWS::S3::Base.establish_connection!(
     :access_key_id => ENV['AMAZON_ACCESS_KEY_ID'],
-    :secret_access_key => ENV['AMAZON_SECRET_ACCESS_KEY']
+    :secret_access_key => ENV['AMAZON_SECRET_ACCESS_KEY'],
+    :use_ssl => true
   )
 
   versioned_files = get_all_versions().keys
