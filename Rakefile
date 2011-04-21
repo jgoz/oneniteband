@@ -31,7 +31,7 @@ desc 'Deploy files to S3'
 task :deploy => [:css, :minjs] do
   require 'aws/s3'
   
-  BUCKET = 'oneniteband.com'
+  BUCKET = 's3.oneniteband.com'
   NOGZIP_EXTS = ['.gif', '.jpg', '.jpeg', '.png', '.ico', '.woff']
 
   AWS::S3::Base.establish_connection!(
