@@ -32,7 +32,7 @@ task :deploy => [:css, :minjs] do
   require 'aws/s3'
   
   BUCKET = 's3.oneniteband.com'
-  NOGZIP_EXTS = ['.gif', '.jpg', '.jpeg', '.png', '.ico', '.woff']
+  NOGZIP_EXTS = ['.gif', '.jpg', '.jpeg', '.png', '.ico', '.woff', '.pdf']
 
   AWS::S3::Base.establish_connection!(
     :access_key_id => ENV['AMAZON_ACCESS_KEY_ID'],
