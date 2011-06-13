@@ -36,13 +36,13 @@ html {
   background: $container-bg;
 }
 
-.nav, #main, #footer, div.intro, blockquote.intro {
+#main, #footer, div.intro, blockquote.intro, .nav {
   @include box-sizing(border-box);
 
   margin: 0px auto;
   max-width: $main-max-width;
-  padding-left: 2em;
-  padding-right: 2em;
+  padding-left: 32px;
+  padding-right: 32px;
 }
 
 @media screen and (max-device-width: 480px) {
@@ -81,6 +81,44 @@ html {
 }
 
 .nav {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+
+    &.home, &.bio {
+      &:after {
+        content: '\2022';
+        margin: 0 0.5em;
+      }
+    }
+  }
+}
+
+#index .nav .home a { cursor: default; font-weight: bold; text-decoration: none; }
+#bio .nav .bio a { cursor: default; font-weight: bold; text-decoration: none; }
+#contact .nav .contact a { cursor: default; font-weight: bold; text-decoration: none; }
+
+#nav-top {
+  font-size: 87.5%;
+  height: (2em / 0.875);
+  line-height: (2 / 0.875);
+  text-align: right;
+
+  a, a:link, a:visited { color: $onb-black; }
+  a:hover, a:active { color: black; }
+
+  .contact {
+    a, a:link, a:visited { color: $onb-blue; }
+    a:hover, a:active { color: lighten($onb-blue, 5%); }
+  }
+}
+
+#nav-bottom {
   background-color: $banner-bg;
   color: $onb-almost-white;
   height: 2em;
@@ -90,59 +128,41 @@ html {
   a:hover, a:active { color: white; }
 
   .contact {
-    a, a:link, a:visited { color: lighten($onb-blue, 55%); }
-    a:hover, a:active { color: lighten($onb-blue, 60%); }
-  }
-}
-
-#index .nav .home { display: none; }
-#bio .nav .bio { display: none; }
-#contact .nav .contact { display: none; }
-
-#nav-bottom {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  text-align: left;
-
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin-right: 1em;
-    &:last-child { margin-right: 0; }
+    a, a:link, a:visited { color: lighten($onb-blue, 45%); }
+    a:hover, a:active { color: lighten($onb-blue, 50%); }
   }
 }
 
 .lt-640 {
-  #nav-bottom {
+  #nav-top {
     display: block;
     padding: 0;
+  }
+
+  #nav-top, #nav-bottom {
     text-align: center;
+  }
+}
+
+@media screen and (max-device-width: 480px) {
+  #nav-top.nav {
+    display: none;
   }
 }
 
 #main {
   background: $main-bg;
   min-height: 15em;
-  padding-top: 1.5em;
   padding-bottom: 1.5em;
   position: relative;
 }
 
 .gt-1220 {
-  #main {
+  #main, #nav-top {
     border-left: 1px solid $banner-bg;
     border-right: 1px solid $banner-bg;
   }
 }
-
-#index #main { padding-top: 0; }
 
 #footer {
   font-size: 82.5%;
@@ -199,7 +219,6 @@ h2 {
 
 p.intro {
   @include rhythm-pc(112.5%);
-  padding-top: (1.5em / 1.125);
   margin-bottom: 0;
 }
 
@@ -207,6 +226,10 @@ p.intro {
   div.intro {
     padding-left: 0.25em;
     padding-right: 0.25em;
+  }
+
+  p.intro {
+    padding-top: (2em / 1.125);
   }
 
   #bio blockquote.intro {
@@ -400,7 +423,7 @@ p.intro {
 
       border: 1px solid $border-fg;
       position: absolute;
-      top: 36px;
+      top: 12px;
       width: 250px;
     }
 
@@ -440,10 +463,20 @@ p.intro {
 /* Compatibility for shitty browsers */
 
 .lt-ie8 {
-  #nav-bottom {
+  .nav {
     ul { overflow: hidden; }
     li { float: left; }
   }
+
+  #nav-top {
+    ul { float: right; }
+    li { margin-left: 1em; }
+  }
+
+  #nav-bottom {
+    li { margin-right: 1em; }
+  }
+
 
   .blocks {
     overflow: hidden;
@@ -487,4 +520,12 @@ p.intro {
 .lt-ie7 {
   #bio p { width: expression(document.body.clientWidth > 560 ? "35em" : "auto"); }
   .photo-pane { width: expression(document.body.clientWidth > 985 ? "310px" : "640px"); }
+
+  #contact #main {
+    height: 450px;
+  }
+
+  a.big-action {
+    color: $onb-very-white;
+  }
 }
