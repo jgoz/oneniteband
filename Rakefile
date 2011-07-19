@@ -30,6 +30,7 @@ end
 desc 'Deploy files to S3'
 task :deploy => [:css, :minjs] do
   require 'aws/s3'
+  require 'net/sftp'
   
   BUCKET = 'www.oneniteband.com'
   NOGZIP_EXTS = ['.gif', '.jpg', '.jpeg', '.png', '.ico', '.woff', '.pdf']
@@ -48,6 +49,7 @@ task :deploy => [:css, :minjs] do
   deployed = []
 
   oldwd = Dir.getwd
+
   Dir.chdir('_site')
   Dir.glob(File.join('**', '*')) do |path|
     next if File.directory? File.expand_path(path)
@@ -70,6 +72,27 @@ task :deploy => [:css, :minjs] do
 
     deployed << path
   end
+
+  REMOTE_PATH_ROOT = '/home/public_html/oneniteband.com'
+
+  Net::SFTP.start(ENV['STATIC_HOST'], ENV['STATIC_USER'], :password => ENV['STATIC_PASSWORD']) do |sftp|
+
+    rm_r(sftp, REMOTE_PATH_ROOT)
+
+    Dir.glob(File.join('**', '*')) do |path|
+
+      remote_path = File.join(REMOTE_PATH_ROOT, path)
+
+      if File.directory? File.expand_path(path)
+        sftp.mkdir! remote_path
+      else
+        sftp.upload!(path, remote_path)
+      end
+
+      puts "%s -> %s" % [path, remote_path]
+    end
+  end
+
   Dir.chdir(oldwd)
 
   bucket = AWS::S3::Bucket.find(BUCKET)
@@ -78,6 +101,21 @@ task :deploy => [:css, :minjs] do
   (all_keys - deployed).each do |key|
     puts "x %s" % key
     AWS::S3::S3Object.delete(key, BUCKET)
+  end
+end
+
+def rm_r(sftp, path)
+  sftp.dir.foreach(path) do |entry|
+    next if entry.name == '.' or entry.name == '..'
+
+    full_path = File.join(path, entry.name)
+
+    if entry.directory?
+      rm_r(sftp, full_path)
+      sftp.rmdir! full_path
+    else
+      sftp.remove! full_path
+    end
   end
 end
 
