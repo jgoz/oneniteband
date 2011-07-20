@@ -73,7 +73,7 @@ task :deploy => [:css, :minjs] do
     deployed << path
   end
 
-  REMOTE_PATH_ROOT = '/home/public_html/oneniteband.com'
+  REMOTE_PATH_ROOT = '/home/public_html/oneniteband.com/site'
 
   Net::SFTP.start(ENV['STATIC_HOST'], ENV['STATIC_USER'], :password => ENV['STATIC_PASSWORD']) do |sftp|
 
