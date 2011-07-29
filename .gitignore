@@ -10,3 +10,4 @@ distlib
 apps
 _site
 js/*.*.js
+google*.html
