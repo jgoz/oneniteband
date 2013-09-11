@@ -13,7 +13,7 @@ $main-max-width: 1200px;
 
   @include box-sizing(border-box);
   @include border-radius($button_size/8);
-  @include text-shadow($shadow, 0, -1px, 0);
+  @include single-text-shadow($shadow, 0, -1px, 0);
 
   background-color: $base_color;
   border: 1px solid darken($base_color, 20%);
@@ -187,7 +187,7 @@ div.intro, blockquote.intro {
   background: $banner-bg;
 
   h1 {
-    @include text-shadow(rgba(0,0,0,0.25), 0, -1px, 0);
+    @include single-text-shadow(rgba(0,0,0,0.25), 0, -1px, 0);
 
     letter-spacing: -2px;
   }
@@ -259,7 +259,7 @@ p.intro {
   width: 30%;
 
   h2 {
-    @include text-shadow($onb-blue-light, 1px, 0, 1px);
+    @include single-text-shadow($onb-blue-light, 1px, 0, 1px);
   }
 
   p + p { margin-bottom: 0; }
