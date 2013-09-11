@@ -248,7 +248,7 @@ p.intro {
 }
 
 .block {
-  @include box-shadow(rgba(0,0,0,0.25), 0, 0, 8px);
+  @include single-box-shadow(rgba(0,0,0,0.25), 0, 0, 8px);
 
   background-color: $block-bg;
   border: 1px solid $border-fg;
@@ -320,7 +320,7 @@ p.intro {
   a:hover { img { @include opacity(1); } }
 
   img {
-    @include box-shadow(rgba(0,0,0,0.5), 0, 0, 4px);
+    @include single-box-shadow(rgba(0,0,0,0.5), 0, 0, 4px);
 
     background-color: $block-bg;
   }
@@ -379,7 +379,7 @@ p.intro {
 }
 
 #photo-viewer {
-  @include box-shadow(rgba(0,0,0,0.5), 0, 0, 10px);
+  @include single-box-shadow(rgba(0,0,0,0.5), 0, 0, 10px);
 
   background: $onb-very-white;
   border: 1px solid $border-fg;
@@ -419,7 +419,7 @@ p.intro {
     }
 
     .rob {
-      @include box-shadow(rgba(0,0,0,0.5), 0, 0, 10px);
+      @include single-box-shadow(rgba(0,0,0,0.5), 0, 0, 10px);
 
       border: 1px solid $border-fg;
       position: absolute;
