@@ -58,6 +58,12 @@
     changePhoto($(_selectors.v).data("link").prev("a"));
   }
 
+  function preload(arrayOfImages) {
+    $(arrayOfImages).each(function(){
+      $('<img/>')[0].src = this;
+    });
+  }
+
   function init($pane) {
     buildViewerDom();
 
@@ -73,6 +79,8 @@
     if (isMobile) {
       $(_selectors.o).css("padding-top", $pane.offset().top - 20);
     }
+
+    preload($("a", $pane).map(function() { return $(this).attr("href"); }));
   }
 
   $(function() {
