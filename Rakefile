@@ -2,6 +2,7 @@ task :default => [ :css, :minjs ]
 
 desc 'Regenerates all sass templates.'
 task :css do
+  system "rm _site/css/*.css"
   system "compass compile --sass-dir _stylesheets --css-dir css --output-style compressed"
 end
 
@@ -31,7 +32,7 @@ desc 'Deploy files to S3'
 task :deploy => [:css, :minjs] do
   require 'aws/s3'
   require 'net/sftp'
-  
+
   BUCKET = 'www.oneniteband.com'
   NOGZIP_EXTS = ['.gif', '.jpg', '.jpeg', '.png', '.ico', '.woff', '.pdf']
 
