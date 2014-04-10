@@ -36,7 +36,7 @@ html {
   background: $container-bg;
 }
 
-#main, #footer, div.intro, blockquote.intro, .nav {
+#main, #footer, div.intro, blockquote.intro, .nav, .video-box {
   @include box-sizing(border-box);
 
   margin: 0px auto;
@@ -158,7 +158,7 @@ html {
 }
 
 .gt-1220 {
-  #main, #nav-top {
+  #main, #nav-top, .video-box {
     border-left: 1px solid $banner-bg;
     border-right: 1px solid $banner-bg;
   }
@@ -174,6 +174,38 @@ html {
 
 .lt-640 {
   #footer { text-align: center; }
+}
+
+.video-box {
+  text-align: center;
+  padding: 1.5em 0;
+}
+
+.video {
+  @include single-box-shadow(rgba(0,0,0,0.25), 0, 0, 8px);
+
+  border: 1px solid $border-fg;
+  display: inline-block;
+  margin: 0 0.15em;
+
+  position: relative;
+  overflow: hidden;
+  width: 500px;
+  height: 281px;
+
+  iframe, object, embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.lt-480 {
+  .video {
+    width: 350px;
+  }
 }
 
 a.big-action {
@@ -218,8 +250,10 @@ h2 {
 }
 
 p.intro {
-  @include rhythm-pc(112.5%);
+  @include rhythm-pc(125%);
   margin-bottom: 0;
+  padding: 1.5em 0;
+  text-align: center;
 }
 
 @media screen and (max-device-width: 480px) {
@@ -347,6 +381,10 @@ p.intro {
     img {
       width: 100%;
     }
+  }
+
+  .video:first-child {
+    margin-bottom: 0.5em;
   }
 }
 

@@ -3,7 +3,7 @@ js/photo.js:
   gen: min
 
 css/style.css:
-  ver: 3
+  ver: 4
 js/libs/head.min.js:
   ver: 3
 js/libs/dd_belatedpng.js:
